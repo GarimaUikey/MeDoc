@@ -93,51 +93,23 @@ Request → Route → Middleware → Controller → Service → Model → Respon
 
 ### 1️⃣ Clone the Repository
 
-```bash
-git clone <repo-url>
-cd project-root
-```
+------------------------
 
 ### 2️⃣ Setup Backend
 
-```bash
-cd server
-npm install
-```
-
-Create `.env` file:
-
-```
-PORT=5000
-MONGO_URI=your_mongodb_connection
-JWT_SECRET=your_secret_key
-```
+------------------------
 
 Run backend:
 
-```bash
-npm start
-```
-
----
+------------------------
 
 ### 3️⃣ Setup Frontend
 
-```bash
-cd client
-npm install
-npm start
-```
-
----
+--------------------------
 
 ## 📡 API Base URL
 
-```
-http://localhost:5000/api
-```
-
----
+---------------------------
 
 ## 🔐 Security Practices
 
@@ -166,8 +138,8 @@ http://localhost:5000/api
 
 ## 👨‍💻 Contributors
 
-* Backend Developer: *You*
-* Frontend Developer: Team
+* Backend Developer:
+* Frontend Developer:
 
 ---
 
