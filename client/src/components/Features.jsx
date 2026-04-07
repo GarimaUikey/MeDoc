@@ -3,19 +3,19 @@ function Features({ handleProtectedAction }) {
     {
       title: "Order Medicines",
       desc: "Get medicines delivered quickly",
-      icon: "💊",
+      // icon: "💊",
       path: "/medicines",
     },
     {
       title: "Consult a Doctor",
       desc: "Talk to certified doctors online",
-      icon: "👨‍⚕️",
+      // icon: "👨‍⚕️",
       path: "/doctors",
     },
     {
       title: "Book Appointments",
       desc: "Schedule visits with specialists",
-      icon: "📅",
+      // icon: "📅",
       path: "/appointments",
     },
   ];
