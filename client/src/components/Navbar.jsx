@@ -30,7 +30,7 @@ function Navbar({ isLoggedIn, setIsLoggedIn }) {
         <p className="cursor-pointer hover:text-green-600 transition"><b>Appointments</b></p>
         {/* Address */}
   <p className="cursor-pointer hover:text-green-600">
-    <b>📍 Bhopal</b>
+    <b>Bhopal</b>
   </p>
 
   {/* Cart */}

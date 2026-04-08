@@ -36,7 +36,7 @@ const addToCart = (med) => {
           <div 
           key={i} 
           className="bg-white p-4 rounded-xl shadow hover:shadow-lg transition">
-  <div className="text-3xl mb-2">💊</div>
+  <div className="text-3xl mb-2"></div>
   <h3 className="font-semibold">{med}</h3>
   <p className="text-sm text-gray-500">₹20</p>
 
