@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+@import "tailwindcss";
+
+* {
+   box-sizing: border-box;
+  font-family: 'Outfit', sans-serif;
+}
+
+
+
+body {
+  min-height: 100vh;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* This is your "Frame" */
+.app {
+  width: 100%;
+  margin: auto;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* Correct v4 syntax for hiding scrollbars */
+@utility hide-scrollbar {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@theme {
+  --color-primary: #2b6ece;
+  --grid-template-columns-auto: repeat(auto-fill, minmax(200px, 250px));
+}
+
+.active hr{
+  @apply block
+}
+
+::-webkit-scrollbar{
+  @apply hidden
+}
+
+@media(max-width:740px){
+  .active p{
+    @apply text-white bg-primary
+  }
+}

@@ -1,0 +1,166 @@
+.header{
+    height: 50vw;
+    margin: 0px auto;
+    background: url('/header_img.png') no-repeat center;
+    background-size: cover;
+    position: relative;
+    border-radius: 0px 0px 0px 0px;
+    overflow: hidden;
+    width: 100vw;
+
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    
+}
+.header-contents{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 1.5vw;
+    max-width: 40%;
+    bottom: 15%;
+    left: 6vw;
+    animation: fadeIn 3s;
+}
+.header-contents h2{
+    font-weight: 500;
+    color: #0F172A;
+    font-size: max(4.5vw,22px);
+    line-height: 1.1;
+
+}
+.header-contents h5{
+    font-weight: 400;
+    color: #011944;
+    font-size: 1.8vw;
+    margin-top: -2vw;
+}
+
+.header-contents p{
+    font-weight: 300;
+    color: #0F172A;
+    font-size: 1.5vw;
+}
+
+.header-buttons{
+    display: flex;
+    flex-direction: row; /* Horizontal! */
+    gap: 5px;
+}
+
+
+.header-contents button {
+    border: none;
+    font-weight: 500;
+    padding: 1vw 2.3vw;
+    font-size: max(1vw, 13px);
+    border-radius: 50px;
+    cursor: pointer; 
+    transition: 0.3s;    
+    margin-right: 15px;    /* Adds the gap between them since you aren't using 'gap' on the parent */
+    vertical-align: middle;
+}
+/* Specific style for "Order Medicine" */
+.header-contents .one {
+    background-color: #2563eb; /* Your blue color */
+    color: white;
+}
+
+/* Specific style for "Book Appointments" */
+.header-contents .two {
+    background-color: white;
+    color: #011944; /* Your blue color */
+    border: 1px solid #011944; /* Optional: adds a border so it stands out on white backgrounds */
+}
+
+/* Optional: Hover effects to make it feel interactive */
+.header-contents .one:hover {
+    background-color: #022a72;
+}
+
+.header-contents .two:hover {
+    background-color: #f0f0f0;
+}
+
+/* Tablet & Small Laptops */
+@media (max-width: 1050px) {
+    .header {
+        height: 55vw; /* Slightly taller to accommodate wrapping text */
+    }
+    .header-contents {
+        max-width: 60%;
+        bottom: 10%;
+    }
+    .header-contents h2 {
+        font-size: 5vw;
+    }
+    .header-contents h5 {
+        font-size: 2.2vw;
+    }
+    .header-contents p {
+        font-size: 1.8vw;
+    }
+}
+
+/* Tablets & Large Phones */
+@media (max-width: 750px) {
+    .header {
+        height: 70vw; /* Increase height as text stacks */
+        border-radius: 0; /* Remove rounding on small screens for a cleaner look */
+    }
+    .header-contents {
+        max-width: 60%;
+        left: 5vw;
+        bottom: 8%;
+        gap: 2.5vw;
+    }
+    .header-contents h2 {
+        font-size: 6.5vw;
+    }
+    .header-contents h5 {
+        font-size: 3vw;
+        margin-top: -1vw;
+    }
+    .header-contents p {
+        display: none; /* Keep hidden to save space as per your design */
+    }
+    /* Stack buttons vertically on small screens if they run out of space */
+    .header-btns {
+        flex-direction: column; 
+        width: 100%;
+    }
+    .header-contents button {
+        padding: 3vw 6vw;
+        width: 100%; /* Full width buttons look better on mobile */
+        font-size: 14px;
+        text-align: center;
+    }
+}
+
+/* Small Phones */
+@media (max-width: 480px) {
+    .header {
+        height: 100vw; /* Square-ish header for very small screens */
+    }
+    .header-contents h2 {
+        font-size: 6vw;
+        width: 60%;
+    }
+    .header-contents h5 {
+        font-size: 4vw;
+        width: 60%;
+    }
+    .header-btns {
+        flex-direction: column; 
+        width: 100%;
+    }
+    .header-contents button {
+        padding: 1vw 3vw;
+        width: 100%; /* Full width buttons look better on mobile */
+        font-size: 7px;
+        text-align: center;
+    }
+}
