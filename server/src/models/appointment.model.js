@@ -1,17 +1,24 @@
-// appointment.model.js
 const mongoose = require("mongoose");
 
 const appointmentSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "User"
+    ref: "User",
+    required: true
   },
   doctor: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Doctor"
+    ref: "Doctor",
+    required: true
   },
-  date: Date,
-  time: String,
+  date: {
+    type: Date,
+    required: true
+  },
+  time: {
+    type: String,
+    required: true
+  },
   status: {
     type: String,
     enum: ["booked", "completed", "cancelled"],
