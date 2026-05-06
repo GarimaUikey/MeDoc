@@ -16,24 +16,39 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true,
-    select: false   // 🔐 security
-  },
-  phone: {
-    type: String
+    select: false   // security
   },
   role: {
     type: String,
     enum: ["user", "admin"],
     default: "user"
   },
-  address: [
-    {
-      street: String,
-      city: String,
-      state: String,
-      pincode: String
+  phone: {
+    type: String,
+    default: ""
+  },
+
+  gender: {
+    type: String,
+    default: ""
+  },
+
+  dob: {
+    type: String,
+    default: ""
+  },
+
+  address: {
+    line1: {
+      type: String,
+      default: ""
+    },
+
+    line2: {
+      type: String,
+      default: ""
     }
-  ],
+  },
   isVerified: {
     type: Boolean,
     default: false
