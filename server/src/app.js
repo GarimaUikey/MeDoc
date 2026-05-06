@@ -1,3 +1,4 @@
+const doctorRoutes = require("./modules/doctor/doctor.route");
 const express = require("express");
 const cors = require("cors");
 const userRoutes = require("./modules/user/user.route");
@@ -5,6 +6,7 @@ const app = express();
 
 
 app.use(cors());
+app.use("/api/doctor", doctorRoutes);
 app.use(express.json());
 app.use("/api/user", userRoutes);
 

@@ -2,6 +2,32 @@
 const mongoose = require("mongoose");
 
 const doctorSchema = new mongoose.Schema({
+  image: {
+    type: String,
+    default: ""
+  },
+
+  degree: {
+    type: String,
+    default: ""
+  },
+
+  about: {
+    type: String,
+    default: ""
+  },
+
+  address: {
+    line1: {
+      type: String,
+      default: ""
+    },
+
+    line2: {
+      type: String,
+      default: ""
+    }
+  },
   name: {
     type: String,
     required: true
@@ -10,8 +36,14 @@ const doctorSchema = new mongoose.Schema({
     type: String,
     index: true
   },
-  experience: Number, // years
-  fees: Number,
+  experience: {
+    type: Number,
+    default: 0
+  }, // years
+  fees: {
+    type: Number,
+    default: 0
+  },
   hospital: String,
   availability: [
     {
