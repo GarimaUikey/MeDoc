@@ -1,6 +1,6 @@
 import { toast } from 'react-toastify'
 import React, { useState } from 'react'
-import axios from 'axios'
+import axios from '../utils/axios'
 
 const Login = () => {
 

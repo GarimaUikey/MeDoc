@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { assets } from '../assets/assets'
-import axios from 'axios'
+import axios from '../utils/axios'
 import { toast } from 'react-toastify'
 
 
@@ -59,7 +59,7 @@ const MyProfile = () => {
       const token = localStorage.getItem("token");
 
       const response = await axios.put(
-        "http://localhost:5000/api/user/update",
+        "/user/update",
 
         {
           name: userData.name,
