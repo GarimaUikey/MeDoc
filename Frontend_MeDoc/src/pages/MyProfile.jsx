@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { assets } from '../assets/assets'
+import axios from 'axios'
+import { toast } from 'react-toastify'
+
 
 const MyProfile = () => {
 
@@ -24,17 +27,77 @@ const MyProfile = () => {
 
     if (storedUser) {
 
-      setUserData(prev => ({
-        ...prev,
+      setUserData({
         name: storedUser.name || '',
-        email: storedUser.email || ''
-      }));
+        image: assets.profile_pic,
+        email: storedUser.email || '',
+        phone: storedUser.phone || '',
+        address: {
+          line1: storedUser.address?.line1 || '',
+          line2: storedUser.address?.line2 || ''
+        },
+        gender: storedUser.gender || '',
+        dob: storedUser.dob || ''
+      });
 
     }
 
   }, []);
 
+  const updateProfile = async () => {
 
+    try {
+
+      if (userData.phone.length !== 10) {
+
+        toast.error("Phone number must be exactly 10 digits");
+
+        return;
+
+      }
+
+      const token = localStorage.getItem("token");
+
+      const response = await axios.put(
+        "http://localhost:5000/api/user/update",
+
+        {
+          name: userData.name,
+          phone: userData.phone,
+          gender: userData.gender,
+          dob: userData.dob,
+          address: userData.address
+        },
+
+        {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }
+      );
+
+      console.log(response.data.user);
+
+      localStorage.setItem(
+        "user",
+        JSON.stringify(response.data.user)
+      );
+
+      setUserData(response.data.user);
+
+      toast.success("Profile updated successfully!");
+
+      setIsEdit(false);
+
+    } catch (error) {
+
+      console.log(error.response.data);
+
+      toast.error("Failed to update profile");
+
+    }
+
+  };
 
   return (
     <div className='pt-25 mt-7 mb-18 sm:pt-16 py-10'>
@@ -55,7 +118,22 @@ const MyProfile = () => {
             <p className='font-medium'>Phone:</p>
             {
               isEdit
-                ? <input className='bg-gray-100 max-w-52' type="text" value={userData.phone} onChange={e => setUserData(prev => ({ ...prev, phone: e.target.value }))} />
+                ? <input
+                  className='bg-gray-100 max-w-52'
+                  type="text"
+                  value={userData.phone}
+                  maxLength={10}
+                  onChange={(e) => {
+
+                    const value = e.target.value.replace(/\D/g, '');
+
+                    setUserData(prev => ({
+                      ...prev,
+                      phone: value
+                    }));
+
+                  }}
+                />
                 : <p className='text-blue-400'>{userData.phone || "Not Added"} </p>
             }
             <p className='font-medium'>Address:</p>
@@ -78,9 +156,23 @@ const MyProfile = () => {
             <p className='font-medium'>Gender: </p>
             {
               isEdit
-                ? <select className='max-w-20 bg-gray-100' onChange={(e) => setUserData(prev => ({ ...prev, gender: e.target.value }))} value={userData.gender}>
+                ? <select
+                  className='max-w-28 bg-gray-100'
+                  onChange={(e) =>
+                    setUserData(prev => ({
+                      ...prev,
+                      gender: e.target.value
+                    }))
+                  }
+                  value={userData.gender}
+                >
+
+                  <option value="">Select</option>
+
                   <option value="Male">Male</option>
+
                   <option value="Female">Female</option>
+
                 </select>
                 : <p className='text-gray-400'>{userData.gender || "Not Added"} </p>
             }
@@ -96,7 +188,9 @@ const MyProfile = () => {
         <div className='mt-10'>
           {
             isEdit
-              ? <button className='border border-primary px-8 py-2 rounded-full hover:bg-primary hover:text-white transition-all' onClick={() => setIsEdit(false)}>Save Information</button>
+              ? <button
+                className='border border-primary px-8 py-2 rounded-full hover:bg-primary hover:text-white transition-all'
+                onClick={updateProfile}>Save Information</button>
               : <button className='border border-primary px-8 py-2 rounded-full hover:bg-primary hover:text-white transition-all' onClick={() => setIsEdit(true)}>Edit</button>
           }
         </div>
