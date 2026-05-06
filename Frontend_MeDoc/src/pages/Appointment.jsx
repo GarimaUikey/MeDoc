@@ -1,9 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { AppContext } from '../context/AppContext'
-import { doctors } from '../assets/assets'
 import { assets } from '../assets/assets'
+import { doctorImages } from '../assets/assets'
 import RelatedDoctors from '../components/RelatedDoctors'
+import axios from '../utils/axios'
+import { toast } from 'react-toastify'
 const Appointment = () => {
 
   const { docID } = useParams()
@@ -71,6 +73,58 @@ const Appointment = () => {
 
   }
 
+  const bookAppointment = async () => {
+
+    try {
+
+      const token = localStorage.getItem("token");
+
+      const user = JSON.parse(localStorage.getItem("user"));
+
+      if (!token) {
+
+        toast.error("Please login first");
+
+        return;
+
+      }
+
+      if (!slotTime) {
+
+        toast.error("Please select a slot");
+
+        return;
+
+      }
+
+      const response = await axios.post(
+
+        "/appointment/book",
+
+        {
+          userId: user._id,
+          doctorId: docInfo._id,
+          slotDate: docSlots[slotIndex][0].datetime,
+          slotTime,
+          amount: docInfo.fees
+        }
+
+      );
+
+      toast.success("Appointment booked successfully!");
+
+      console.log(response.data);
+
+    } catch (error) {
+
+      console.log(error.response.data);
+
+      toast.error(error.response.data.message);
+
+    }
+
+  }
+
   useEffect(() => {
     fetchDocInfo()
   }, [doctors, docID])
@@ -90,7 +144,7 @@ const Appointment = () => {
       {/* -----------------------Doctor Details --------------------------*/}
       <div className='flex flex-col sm:flex-row gap-4  mt-4'>
         <div>
-          <img className='bg-primary w-full sm:max-w-72 rounded-lg' src={docInfo.image} alt="" />
+          <img className='bg-primary w-full sm:max-w-72 rounded-lg' src={doctorImages[docInfo.image]} alt="" />
         </div>
 
         <div className='flex-1 border border-gray-400 rounded-lg p-8 py-7 bg-white mx-2 sm:mx-0 mt-[-80px] sm:mt-0'>
@@ -100,7 +154,7 @@ const Appointment = () => {
             <img className='w-5' src={assets.verified_icon} alt="" />
           </p>
           <div className='flex items-center gap-2 text-sm mt-1 text-gray-600'>
-            <p>{docInfo.degree} - {docInfo.speciality}</p>
+            <p>{docInfo.degree} - {docInfo.specialization}</p>
             <button className='py-0.5 px-2 border text-xs rounded-full'>{docInfo.experience}</button>
           </div>
 
@@ -141,11 +195,16 @@ const Appointment = () => {
             ))
           }
         </div>
-        <button className='bg-primary text-white text-sm font-light px-14 py-3 rounded-full my-6'>Book an Appointment</button>
+        <button
+          onClick={bookAppointment}
+          className='bg-primary text-white text-sm font-light px-14 py-3 rounded-full my-6'
+        >
+          Book an Appointment
+        </button>
       </div>
 
       { /* Listing Related Doctors */}
-      <RelatedDoctors docID={docID} speciality={docInfo.speciality} />
+      <RelatedDoctors docID={docID} specialization={docInfo.specialization} />
     </div>
   )
 }

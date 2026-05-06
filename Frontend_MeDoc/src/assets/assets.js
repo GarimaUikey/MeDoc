@@ -93,7 +93,25 @@ import med_51 from './med_51.jpg'
 import med_52 from './med_52.jpg'
 import med_53 from './med_53.jpg'
 
+export const doctorImages = {
 
+  "doc1.png": doc1,
+  "doc2.png": doc2,
+  "doc3.png": doc3,
+  "doc4.png": doc4,
+  "doc5.png": doc5,
+  "doc6.png": doc6,
+  "doc7.png": doc7,
+  "doc8.png": doc8,
+  "doc9.png": doc9,
+  "doc10.png": doc10,
+  "doc11.png": doc11,
+  "doc12.png": doc12,
+  "doc13.png": doc13,
+  "doc14.png": doc14,
+  "doc15.png": doc15
+
+}
 
 
 

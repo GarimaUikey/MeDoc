@@ -18,7 +18,7 @@ const Login = () => {
       if (state === "Sign Up") {
 
         const response = await axios.post(
-          "http://localhost:5000/api/auth/signup",
+          "/auth/signup",
           {
             name,
             email,
@@ -33,7 +33,7 @@ const Login = () => {
       } else {
 
         const response = await axios.post(
-          "http://localhost:5000/api/auth/login",
+          "/auth/signup",
           {
             email,
             password

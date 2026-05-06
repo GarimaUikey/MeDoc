@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { AppContext } from '../context/AppContext'
 import { assets } from '../assets/assets'
+import { doctorImages } from '../assets/assets'
 
 const Doctors = () => {
 
@@ -15,7 +16,7 @@ const Doctors = () => {
   const applyFilter = ()=> {
     if(speciality)
     {
-      setFilterDoc(doctors.filter(doc => doc.speciality === speciality))
+      setFilterDoc(doctors.filter(doc => doc.specialization === speciality))
     }
     else 
     {
@@ -46,7 +47,7 @@ const Doctors = () => {
             filterDoc.map((item,index)=>(
 
                 <div onClick={()=>navigate(`/appointment/${item._id}`)} className='border border-blue-200 rounded-xl overflow-hidden cursor-pointer hover:translate-y-[-10px] transition-all duration-500' key={index}>
-                    <img className='bg-blue-50 w-full hover:scale-105 transition-all duration-500' src={item.image} alt=""/>
+                    <img className='bg-blue-50 w-full hover:scale-105 transition-all duration-500' src={doctorImages[item.image]} alt=""/>
                     <div className='p-2'>
                         <div className='flex items-center gap-2 text-sm  text-green-500 '>
                         <p className='w-2 h-2 bg-green-500 rounded-full'>  </p>
@@ -54,7 +55,7 @@ const Doctors = () => {
                         <img className='w-15 ml-auto' src={assets.rating_stars} alt="" />
                         </div>
                         <p className='text-gray-900 text-lg  font-medium'>{item.name}</p>
-                        <p className='text-gray-600 text-sm'>{item.speciality}</p>
+                        <p className='text-gray-600 text-sm'>{item.specialization}</p>
                     </div>
 
                 </div>
