@@ -1,0 +1,132 @@
+MeDoc — Project Setup Guide
+📌 Project Overview
+
+MeDoc is a full-stack healthcare platform built using the MERN stack.
+
+The project includes:
+
+👤 User Authentication
+👨‍⚕️ Doctor Authentication
+📅 Appointment Booking System
+📊 Doctor Dashboard
+💊 Medicine Ordering System
+🛒 Cart & Checkout
+👤 User Profile Management
+🔐 JWT Authentication & Role-Based Access
+🚀 Technologies Used
+
+Frontend
+React.js
+Vite
+Tailwind CSS
+React Router DOM
+Axios
+React Toastify
+
+Backend
+Node.js
+Express.js
+MongoDB
+Mongoose
+JWT Authentication
+bcrypt
+dotenv
+cors
+
+📂 Project Structure
+MeDoc/
+│
+├── Frontend_MeDoc/
+│   ├── src/
+│   ├── package.json
+│   └── vite.config.js
+│
+├── Backend_MeDoc/
+│   ├── src/
+│   ├── package.json
+│   └── server.js
+│
+└── README.md
+
+⚙️ Prerequisites
+
+Make sure these are installed:
+
+Node.js (v18+ recommended)
+MongoDB Atlas account OR local MongoDB
+Git
+VS Code
+
+
+Frontend Setup
+Open Frontend Folder
+cd Frontend_MeDoc
+Install Dependencies
+npm install
+Run Frontend
+npm run dev
+
+Backend Setup
+Open Backend Folder
+cd Backend_MeDoc
+Install Dependencies
+npm install
+
+
+Environment Variables
+
+Create a: .env
+
+file inside:Backend_MeDoc/
+
+
+Add This Configuration
+PORT=5000
+MONGO_URI=YOUR_MONGODB_CONNECTION_STRING
+JWT_SECRET=YOUR_SECRET_KEY
+
+Run Backend
+npm start
+
+Backend will run on:
+http://localhost:5000
+
+
+Demo Accounts
+User Login
+
+Users can:
+
+book appointments
+manage profile
+order medicines
+manage cart
+
+
+Doctor Login
+
+Doctors can:
+
+manage appointments
+approve/reject bookings
+toggle availability
+access dashboard analytics
+
+
+Main Features
+👤 User Features
+User Signup/Login
+Edit Profile
+Book Appointments
+Cancel Appointments
+Medicine Ordering
+Cart System
+Checkout Flow
+My Orders Section
+
+Doctor Features
+Doctor Signup/Login
+Dashboard Analytics
+Appointment Management
+Availability Toggle
+Patient Information

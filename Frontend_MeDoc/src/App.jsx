@@ -18,6 +18,7 @@ import DoctorDashboard from './pages/DoctorDashboard'
 import { useLocation } from 'react-router-dom'
 import Auth from './pages/Auth'
 import Payments from './pages/Payments'
+import OrderSuccess from './pages/OrderSuccess'
 
 const App = () => {
   const location = useLocation();
@@ -40,6 +41,7 @@ const App = () => {
           <Route path='/cart' element={<Cart />} />
           <Route path='/order' element={<PlaceOrder />} />
           <Route path='/doctors' element={<Doctors />} />
+          <Route path='/order-success' element={<OrderSuccess />} />
           <Route path='/doctors/:speciality' element={<Doctors />} />
           {/* <Route path='/Login' element={<Login />} /> */}
           <Route path='/About' element={<About />} />
