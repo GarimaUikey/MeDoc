@@ -6,16 +6,17 @@ import Cart from './pages/Cart/Cart'
 import PlaceOrder from './pages/PlaceOrder/PlaceOrder'
 import Footer from './components/Footer/Footer'
 import Doctors from './pages/Doctors'
-import Login from './pages/Login'
+// import Login from './pages/Login'
 import About from './pages/About'
 import Contact from './pages/Contact'
 import MyProfile from './pages/MyProfile'
 import MyAppointments from './pages/MyAppointments'
 import Appointment from './pages/Appointment'
 import OrderNow from './pages/OrderNow/OrderNow'
-import DoctorAuth from './pages/DoctorAuth'
+// import DoctorAuth from './pages/DoctorAuth'
 import DoctorDashboard from './pages/DoctorDashboard'
 import { useLocation } from 'react-router-dom'
+import Auth from './pages/Auth'
 
 const App = () => {
   const location = useLocation();
@@ -30,14 +31,15 @@ const App = () => {
           !isDoctorPage && <Navbar />
         }
         <Routes>
+          <Route path='/login' element={<Auth />} />
           <Route path='/doctor-dashboard' element={<DoctorDashboard />} />
-          <Route path='/doctor-auth' element={<DoctorAuth />} />
+          {/* <Route path='/doctor-auth' element={<DoctorAuth />} /> */}
           <Route path='/' element={<Home />} />
           <Route path='/cart' element={<Cart />} />
           <Route path='/order' element={<PlaceOrder />} />
           <Route path='/doctors' element={<Doctors />} />
           <Route path='/doctors/:speciality' element={<Doctors />} />
-          <Route path='/Login' element={<Login />} />
+          {/* <Route path='/Login' element={<Login />} /> */}
           <Route path='/About' element={<About />} />
           <Route path='/Contact' element={<Contact />} />
           <Route path='/MyProfile' element={<MyProfile />} />

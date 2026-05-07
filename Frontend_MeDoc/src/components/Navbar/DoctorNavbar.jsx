@@ -17,7 +17,7 @@ const DoctorNavbar = () => {
 
     localStorage.removeItem("doctorToken");
 
-    navigate("/doctor-auth");
+    navigate("/login");
 
   };
 
