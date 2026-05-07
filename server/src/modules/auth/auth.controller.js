@@ -72,3 +72,63 @@ exports.login = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
+// edit profile controller
+
+exports.updateProfile = async (req, res) => {
+
+  try {
+
+    const userId = req.user.id;
+
+    const {
+
+      name,
+      phone,
+      address,
+      gender,
+      dob
+
+    } = req.body;
+
+    const updatedUser = await User.findByIdAndUpdate(
+
+      userId,
+
+      {
+        name,
+        phone,
+        address,
+        gender,
+        dob
+      },
+
+      {
+        returnDocument: "after"
+      }
+
+    );
+
+    res.status(200).json({
+
+      success: true,
+
+      message: "Profile updated successfully",
+
+      user: updatedUser
+
+    });
+
+  } catch (error) {
+
+    res.status(500).json({
+
+      success: false,
+
+      message: error.message
+
+    });
+
+  }
+
+};

@@ -12,7 +12,7 @@ const {
 // UPDATE PROFILE
 router.put(
   "/update",
-  authMiddleware,
+  authMiddleware(["user"]),
   updateProfile
 );
 

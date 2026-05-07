@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react'
 import axios from '../utils/axios'
 import { doctorImages } from '../assets/assets'
 import { toast } from 'react-toastify'
+import { useNavigate } from 'react-router-dom'
 
 const MyAppointments = () => {
 
   const [appointments, setAppointments] = useState([])
-
+  const navigate = useNavigate();
   const cancelAppointment = async (appointmentId) => {
 
     try {
@@ -127,7 +128,17 @@ const MyAppointments = () => {
                 </div>
                 <div></div>
                 <div className='flex flex-col gap-2 justify-end'>
-                  <button className='text-sm text-stone-500 text-center sm:min-w-48 py-2 border rounded cursor-pointer hover:bg-primary hover:text-white transition-all duration-500'>Pay Online</button>
+                  <button
+
+                    onClick={() => navigate("/payments")}
+
+                    className='text-sm text-stone-500 text-center sm:min-w-48 py-2 border rounded cursor-pointer hover:bg-primary hover:text-white transition-all duration-500'
+
+                  >
+
+                    Pay Online
+
+                  </button>
                   <button
                     onClick={() => cancelAppointment(item._id)}
                     className='text-sm text-stone-500 text-center sm:min-w-48 py-2 border rounded cursor-pointer hover:bg-red-600 hover:text-white transition-all duration-500'
