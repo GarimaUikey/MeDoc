@@ -107,6 +107,12 @@ const Appointment = () => {
           slotDate: docSlots[slotIndex][0].datetime,
           slotTime,
           amount: docInfo.fees
+        },
+
+        {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
         }
 
       );

@@ -1,11 +1,29 @@
 const express = require("express");
+const authMiddleware = require("../../middleware/auth.middleware");
 
 const router = express.Router();
 
 const {
+
   getAllDoctors,
-  getDoctorById
+  getDoctorById,
+  loginDoctor,
+  getDoctorAppointments
+
 } = require("./doctor.controller");
+
+
+// DOCTOR LOGIN
+router.post("/login", loginDoctor);
+
+router.get(
+
+  "/appointments",
+
+  authMiddleware,
+  getDoctorAppointments
+
+);
 
 
 // GET ALL DOCTORS

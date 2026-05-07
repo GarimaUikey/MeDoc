@@ -33,7 +33,7 @@ const Login = () => {
       } else {
 
         const response = await axios.post(
-          "/auth/signup",
+          "/auth/login",
           {
             email,
             password

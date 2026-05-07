@@ -1,4 +1,5 @@
 const express = require("express");
+const authMiddleware = require("../../middleware/auth.middleware");
 
 const router = express.Router();
 
@@ -10,14 +11,38 @@ const {
 
 
 // BOOK APPOINTMENT
-router.post("/book", bookAppointment);
+router.post(
+
+  "/book",
+
+  authMiddleware,
+
+  bookAppointment
+
+);
 
 
 // GET USER APPOINTMENTS
-router.get("/user/:userId", getUserAppointments);
+router.get(
+
+  "/user/:userId",
+
+  authMiddleware,
+
+  getUserAppointments
+
+);
 
 // Canecel Appointments // 
-router.put("/cancel/:appointmentId", cancelAppointment);
+router.put(
+
+  "/cancel/:appointmentId",
+
+  authMiddleware,
+
+  cancelAppointment
+
+);
 
 
 module.exports = router;
