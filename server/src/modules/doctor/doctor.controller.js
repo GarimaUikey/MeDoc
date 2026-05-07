@@ -6,6 +6,76 @@ const jwt = require("jsonwebtoken");
 
 exports.getDoctorById
 
+// DOCTOR SIGNUP
+exports.signupDoctor = async (req, res) => {
+
+  try {
+
+    const {
+
+      name,
+      email,
+      password,
+      specialization
+
+    } = req.body;
+
+    const existingDoctor = await Doctor.findOne({
+
+      email
+
+    });
+
+    if (existingDoctor) {
+
+      return res.status(400).json({
+
+        success: false,
+        message: "Doctor already exists"
+
+      });
+
+    }
+
+    const hashedPassword = await bcrypt.hash(
+
+      password,
+      10
+
+    );
+
+    const doctor = await Doctor.create({
+
+      name,
+      email,
+      password: hashedPassword,
+      specialization
+
+    });
+
+    doctor.password = undefined;
+
+    res.status(201).json({
+
+      success: true,
+      message: "Doctor account created",
+      doctor
+
+    });
+
+  } catch (error) {
+
+    res.status(500).json({
+
+      success: false,
+      message: error.message
+
+    });
+
+  }
+
+};
+
 // DOCTOR LOGIN
 exports.loginDoctor = async (req, res) => {
 
@@ -104,6 +174,49 @@ exports.getDoctorAppointments = async (req, res) => {
 
       success: true,
       appointments
+
+    });
+
+  } catch (error) {
+
+    res.status(500).json({
+
+      success: false,
+      message: error.message
+
+    });
+
+  }
+
+};
+// UPDATE APPOINTMENT STATUS
+exports.updateAppointmentStatus = async (req, res) => {
+
+  try {
+
+    const { appointmentId } = req.params;
+
+    const { status } = req.body;
+
+    const appointment = await Appointment.findByIdAndUpdate(
+
+      appointmentId,
+
+      {
+        status
+      },
+
+      {
+        returnDocument: 'after'
+      }
+
+    );
+
+    res.status(200).json({
+
+      success: true,
+      message: "Appointment status updated",
+      appointment
 
     });
 

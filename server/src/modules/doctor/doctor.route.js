@@ -8,10 +8,14 @@ const {
   getAllDoctors,
   getDoctorById,
   loginDoctor,
+  signupDoctor,
+  updateAppointmentStatus,
   getDoctorAppointments
 
 } = require("./doctor.controller");
 
+// Doctor SignUP //
+router.post("/signup", signupDoctor);
 
 // DOCTOR LOGIN
 router.post("/login", loginDoctor);
@@ -22,6 +26,16 @@ router.get(
 
   authMiddleware,
   getDoctorAppointments
+
+);
+
+router.put(
+
+  "/appointment-status/:appointmentId",
+
+  authMiddleware,
+
+  updateAppointmentStatus
 
 );
 

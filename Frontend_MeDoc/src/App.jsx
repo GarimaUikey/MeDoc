@@ -13,32 +13,44 @@ import MyProfile from './pages/MyProfile'
 import MyAppointments from './pages/MyAppointments'
 import Appointment from './pages/Appointment'
 import OrderNow from './pages/OrderNow/OrderNow'
+import DoctorAuth from './pages/DoctorAuth'
+import DoctorDashboard from './pages/DoctorDashboard'
+import { useLocation } from 'react-router-dom'
 
 const App = () => {
+  const location = useLocation();
+
+  const isDoctorPage =
+
+    location.pathname.includes("doctor");
   return (
     <>
-    <div className='mx-4 sm:mx-[10%] '  >
-      <Navbar/>
-      <Routes>
-        <Route  path='/' element={<Home/>}/>
-        <Route  path='/cart' element={<Cart/>}/>
-        <Route  path='/order' element={<PlaceOrder/>}/>
-        <Route path='/doctors'  element={<Doctors/>}/>
-        <Route path='/doctors/:speciality'  element={<Doctors/>}/>
-        <Route path='/Login'  element={<Login/>}/>
-        <Route path='/About'  element={<About/>}/>
-        <Route path='/Contact'  element={<Contact/>}/>
-        <Route path='/MyProfile'  element={<MyProfile/>}/>
-        <Route path='/myappointments'  element={<MyAppointments/>}/>
-        <Route path='/appointment/:docID'  element={<Appointment/>}/>
-        <Route path='/ordernow' element={<OrderNow/>}/>
-      </Routes>      
-    </div> 
-    <Footer/> 
+      <div className='mx-4 sm:mx-[10%] '  >
+        {
+          !isDoctorPage && <Navbar />
+        }
+        <Routes>
+          <Route path='/doctor-dashboard' element={<DoctorDashboard />} />
+          <Route path='/doctor-auth' element={<DoctorAuth />} />
+          <Route path='/' element={<Home />} />
+          <Route path='/cart' element={<Cart />} />
+          <Route path='/order' element={<PlaceOrder />} />
+          <Route path='/doctors' element={<Doctors />} />
+          <Route path='/doctors/:speciality' element={<Doctors />} />
+          <Route path='/Login' element={<Login />} />
+          <Route path='/About' element={<About />} />
+          <Route path='/Contact' element={<Contact />} />
+          <Route path='/MyProfile' element={<MyProfile />} />
+          <Route path='/myappointments' element={<MyAppointments />} />
+          <Route path='/appointment/:docID' element={<Appointment />} />
+          <Route path='/ordernow' element={<OrderNow />} />
+        </Routes>
+      </div>
+      <Footer />
     </>
-    
-    
-    
+
+
+
   )
 }
 
