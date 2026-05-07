@@ -202,10 +202,33 @@ const Appointment = () => {
           }
         </div>
         <button
-          onClick={bookAppointment}
-          className='bg-primary text-white text-sm font-light px-14 py-3 rounded-full my-6'
+
+          onClick={docInfo.available
+            ? bookAppointment
+            : null
+          }
+
+          disabled={!docInfo.available}
+
+          className={`
+
+    w-full py-3 rounded-lg text-white font-medium transition-all duration-300
+
+    ${docInfo.available
+              ? "bg-primary hover:bg-[#1f5dc5] cursor-pointer"
+              : "bg-gray-400 cursor-not-allowed"
+            }
+
+  `}
+
         >
-          Book an Appointment
+
+          {
+            docInfo.available
+              ? "Book Appointment"
+              : "Doctor Unavailable"
+          }
+
         </button>
       </div>
 

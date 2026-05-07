@@ -10,7 +10,8 @@ const {
   loginDoctor,
   signupDoctor,
   updateAppointmentStatus,
-  getDoctorAppointments
+  getDoctorAppointments,
+  toggleAvailability
 
 } = require("./doctor.controller");
 
@@ -24,7 +25,7 @@ router.get(
 
   "/appointments",
 
-  authMiddleware,
+  authMiddleware(["doctor"]),
   getDoctorAppointments
 
 );
@@ -33,9 +34,19 @@ router.put(
 
   "/appointment-status/:appointmentId",
 
-  authMiddleware,
+  authMiddleware(["doctor"]),
 
   updateAppointmentStatus
+
+);
+
+router.put(
+
+  "/toggle-availability",
+
+  authMiddleware(["doctor"]),
+
+  toggleAvailability
 
 );
 

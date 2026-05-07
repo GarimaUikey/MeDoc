@@ -1,49 +1,68 @@
 const jwt = require("jsonwebtoken");
 
-const authMiddleware = (req, res, next) => {
+const authMiddleware = (roles = []) => {
 
-  try {
+  return (req, res, next) => {
 
-    const token = req.headers.authorization;
+    try {
 
-    if (!token) {
+      const token = req.headers.authorization;
+
+      if (!token) {
+
+        return res.status(401).json({
+
+          success: false,
+          message: "No token provided"
+
+        });
+
+      }
+
+      const actualToken = token.split(" ")[1];
+
+      const decoded = jwt.verify(
+
+        actualToken,
+
+        process.env.JWT_SECRET
+
+      );
+
+      // ROLE CHECK
+      if (
+
+        roles.length > 0 &&
+
+        !roles.includes(decoded.role)
+
+      ) {
+
+        return res.status(403).json({
+
+          success: false,
+          message: "Access denied"
+
+        });
+
+      }
+
+      req.user = decoded;
+
+      next();
+
+    } catch (error) {
 
       return res.status(401).json({
 
-        message: "No token provided"
+        success: false,
+        message: "Invalid token"
 
       });
 
     }
 
-    // Format: Bearer TOKEN
-    const actualToken = token.split(" ")[1];
-
-    console.log(actualToken);
-
-    const decoded = jwt.verify(
-
-      actualToken,
-
-      process.env.JWT_SECRET
-
-    );
-
-    console.log(decoded);
-
-    req.user = decoded;
-
-    next();
-
-  } catch (error) {
-
-    return res.status(401).json({
-
-      message: "Invalid token"
-
-    });
-
-  }
+  };
 
 };
 

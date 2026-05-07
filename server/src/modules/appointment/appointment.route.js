@@ -15,7 +15,7 @@ router.post(
 
   "/book",
 
-  authMiddleware,
+  authMiddleware(["user"]),
 
   bookAppointment
 
@@ -27,7 +27,7 @@ router.get(
 
   "/user/:userId",
 
-  authMiddleware,
+  authMiddleware(["user"]),
 
   getUserAppointments
 
@@ -38,7 +38,7 @@ router.put(
 
   "/cancel/:appointmentId",
 
-  authMiddleware,
+  authMiddleware(["user"]),
 
   cancelAppointment
 

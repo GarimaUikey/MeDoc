@@ -6,6 +6,45 @@ const jwt = require("jsonwebtoken");
 
 exports.getDoctorById
 
+// Doctor Availability controller
+exports.toggleAvailability = async (req, res) => {
+
+  try {
+
+    const doctorId = req.user.id;
+
+    const doctor = await Doctor.findById(
+
+      doctorId
+
+    );
+
+    doctor.available = !doctor.available;
+
+    await doctor.save();
+
+    res.status(200).json({
+
+      success: true,
+      message: "Availability updated",
+
+      available: doctor.available
+
+    });
+
+  } catch (error) {
+
+    res.status(500).json({
+
+      success: false,
+      message: error.message
+
+    });
+
+  }
+
+};
+
 // DOCTOR SIGNUP
 exports.signupDoctor = async (req, res) => {
 

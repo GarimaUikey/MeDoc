@@ -1,5 +1,5 @@
 const Appointment = require("../../models/appointment.model");
-
+const Doctor = require("../../models/doctor.model");
 
 // BOOK APPOINTMENT
 exports.bookAppointment = async (req, res) => {
@@ -13,6 +13,25 @@ exports.bookAppointment = async (req, res) => {
             slotTime,
             amount
         } = req.body;
+        
+        // doctor availablity
+        const doctor = await Doctor.findById(
+
+            doctorId
+
+        );
+
+        if (!doctor.available) {
+
+            return res.status(400).json({
+
+                success: false,
+
+                message: "Doctor is currently unavailable"
+
+            });
+
+        }
 
 
         // CHECK IF SLOT ALREADY BOOKED

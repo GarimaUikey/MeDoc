@@ -10,9 +10,40 @@ const DoctorDashboard = () => {
 
     const doctor = JSON.parse(
 
-    localStorage.getItem("doctor")
+        localStorage.getItem("doctor")
 
-);
+    );
+    
+    const [available, setAvailable] = useState(
+
+        doctor?.available
+
+    );
+
+    const pendingAppointments = appointments.filter(
+
+        item => item.status === "Pending"
+
+    ).length;
+
+    const approvedAppointments = appointments.filter(
+
+        item => item.status === "Approved"
+
+    ).length;
+
+    const completedAppointments = appointments.filter(
+
+        item => item.status === "Completed"
+
+    ).length;
+
+    const rejectedAppointments = appointments.filter(
+
+        item => item.status === "Rejected"
+
+    ).length;
+    
 
     const getAppointments = async () => {
 
@@ -90,6 +121,59 @@ const DoctorDashboard = () => {
 
     };
 
+    const toggleAvailability = async () => {
+
+        try {
+
+            const token = localStorage.getItem(
+
+                "doctorToken"
+
+            );
+
+            const response = await axios.put(
+
+                "/doctor/toggle-availability",
+
+                {},
+
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                }
+
+            );
+
+            setAvailable(response.data.available);
+
+            // update localStorage doctor
+            const updatedDoctor = {
+
+                ...doctor,
+
+                available: response.data.available
+
+            };
+
+            localStorage.setItem(
+
+                "doctor",
+
+                JSON.stringify(updatedDoctor)
+
+            );
+
+            toast.success(response.data.message);
+
+        } catch (error) {
+
+            toast.error(error.response.data.message);
+
+        }
+
+    };
+
     return (
 
         <>
@@ -102,18 +186,90 @@ const DoctorDashboard = () => {
                     Welcome Dr. {doctor?.name}
                 </h1>
 
+                <button
+
+                    onClick={toggleAvailability}
+
+                    className={`px-5 py-2 rounded-lg text-white mb-6 ${available
+                            ? "bg-green-600"
+                            : "bg-red-600"
+                        }`}
+
+                >
+
+                    {
+                        available
+                            ? "Available"
+                            : "Unavailable"
+                    }
+
+                </button>
+
                 <p className='text-gray-600 mb-8'>
                     {doctor?.specialization}
                 </p>
 
-                <div className='bg-white shadow-md rounded-xl p-6 mb-8'>
+                <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-8'>
 
-                    <h2 className='text-xl font-medium'>
-                        Total Appointments:
-                        <span className='text-primary ml-2'>
+                    <div className='bg-white shadow-md rounded-xl p-6'>
+
+                        <h2 className='text-lg font-medium'>
+                            Total
+                        </h2>
+
+                        <p className='text-3xl font-bold text-primary mt-2'>
                             {appointments.length}
-                        </span>
-                    </h2>
+                        </p>
+
+                    </div>
+
+                    <div className='bg-yellow-50 shadow-md rounded-xl p-6'>
+
+                        <h2 className='text-lg font-medium'>
+                            Pending
+                        </h2>
+
+                        <p className='text-3xl font-bold text-yellow-600 mt-2'>
+                            {pendingAppointments}
+                        </p>
+
+                    </div>
+
+                    <div className='bg-green-50 shadow-md rounded-xl p-6'>
+
+                        <h2 className='text-lg font-medium'>
+                            Approved
+                        </h2>
+
+                        <p className='text-3xl font-bold text-green-600 mt-2'>
+                            {approvedAppointments}
+                        </p>
+
+                    </div>
+
+                    <div className='bg-blue-50 shadow-md rounded-xl p-6'>
+
+                        <h2 className='text-lg font-medium'>
+                            Completed
+                        </h2>
+
+                        <p className='text-3xl font-bold text-blue-600 mt-2'>
+                            {completedAppointments}
+                        </p>
+
+                    </div>
+
+                    <div className='bg-red-50 shadow-md rounded-xl p-6'>
+
+                        <h2 className='text-lg font-medium'>
+                            Rejected
+                        </h2>
+
+                        <p className='text-3xl font-bold text-red-600 mt-2'>
+                            {rejectedAppointments}
+                        </p>
+
+                    </div>
 
                 </div>
 
