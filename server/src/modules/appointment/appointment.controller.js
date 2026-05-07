@@ -92,3 +92,31 @@ exports.getUserAppointments = async (req, res) => {
     }
 
 };
+
+exports.cancelAppointment = async (req, res) => {
+
+    try {
+
+        const { appointmentId } = req.params;
+
+        await Appointment.findByIdAndDelete(appointmentId);
+
+        res.status(200).json({
+
+            success: true,
+            message: "Appointment deleted successfully"
+
+        });
+
+    } catch (error) {
+
+        res.status(500).json({
+
+            success: false,
+            message: error.message
+
+        });
+
+    }
+
+};
