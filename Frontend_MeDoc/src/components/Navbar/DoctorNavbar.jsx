@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { assets } from '../../assets/assets'
 
 const DoctorNavbar = () => {
 
   const navigate = useNavigate();
+
+  const [showMenu, setShowMenu] = useState(false);
 
   const doctor = JSON.parse(
 
@@ -26,25 +28,26 @@ const DoctorNavbar = () => {
 
     <div className='fixed top-0 left-0 right-0 w-full border-b bg-white shadow-sm z-50'>
 
-<div className='w-full flex items-center justify-between px-6 py-4'>
+      <div className='w-full flex items-center justify-between px-4 sm:px-6 py-4'>
+
         {/* Left Side */}
 
-        <div className='flex items-center gap-4'>
+        <div className='flex items-center gap-3 sm:gap-4'>
 
           <img
             onClick={() => navigate("/doctor-dashboard")}
             src={assets.logo}
             alt="MeDoc Logo"
-            className='w-32 cursor-pointer'
+            className='w-24 sm:w-32 cursor-pointer'
           />
 
           <div>
 
-            <h1 className='text-2xl font-semibold text-primary'>
+            <h1 className='text-lg sm:text-2xl font-semibold text-primary'>
               MeDoc Doctor Panel
             </h1>
 
-            <p className='text-sm text-gray-500'>
+            <p className='text-xs sm:text-sm text-gray-500'>
               Welcome Dr. {doctor?.name}
             </p>
 
@@ -52,9 +55,9 @@ const DoctorNavbar = () => {
 
         </div>
 
-        {/* Right Side */}
+        {/* Desktop Menu */}
 
-        <div className='flex items-center gap-2 cursor-pointer group relative'>
+        <div className='hidden md:flex items-center gap-2 cursor-pointer group relative'>
 
           <div className='w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-semibold text-lg'>
             {doctor?.name?.charAt(0)}
@@ -94,7 +97,73 @@ const DoctorNavbar = () => {
 
         </div>
 
+        {/* Mobile Menu Button */}
+
+        <div className='md:hidden'>
+
+          <button
+
+            onClick={() => setShowMenu(!showMenu)}
+
+            className='text-3xl text-primary'
+
+          >
+            ☰
+          </button>
+
+        </div>
+
       </div>
+
+      {/* Mobile Dropdown Menu */}
+
+      {
+
+        showMenu && (
+
+          <div className='md:hidden bg-white border-t shadow-md px-6 py-4 flex flex-col gap-4'>
+
+            <p className='font-semibold text-black'>
+              Dr. {doctor?.name}
+            </p>
+
+            <button
+
+              onClick={() => {
+
+                navigate("/doctor-profile");
+
+                setShowMenu(false);
+
+              }}
+
+              className='text-left text-gray-700 hover:text-primary'
+
+            >
+              My Profile
+            </button>
+
+            <button
+
+              onClick={() => {
+
+                logoutDoctor();
+
+                setShowMenu(false);
+
+              }}
+
+              className='text-left text-red-500'
+
+            >
+              Logout
+            </button>
+
+          </div>
+
+        )
+
+      }
 
     </div>
 
