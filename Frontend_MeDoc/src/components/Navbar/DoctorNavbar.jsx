@@ -1,5 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import { assets } from '../../assets/assets'
 
 const DoctorNavbar = () => {
 
@@ -23,39 +24,75 @@ const DoctorNavbar = () => {
 
   return (
 
-    <div className='flex items-center justify-between px-6 py-4 border-b bg-white shadow-sm'>
+    <div className='fixed top-0 left-0 right-0 w-full border-b bg-white shadow-sm z-50'>
 
-      <div>
+<div className='w-full flex items-center justify-between px-6 py-4'>
+        {/* Left Side */}
 
-        <h1 className='text-2xl font-semibold text-primary'>
-          MeDoc Doctor Panel
-        </h1>
+        <div className='flex items-center gap-4'>
 
-        <p className='text-sm text-gray-500'>
-          Welcome Dr. {doctor?.name}
-        </p>
+          <img
+            onClick={() => navigate("/doctor-dashboard")}
+            src={assets.logo}
+            alt="MeDoc Logo"
+            className='w-32 cursor-pointer'
+          />
 
-      </div>
+          <div>
 
-      <div className='flex items-center gap-4'>
+            <h1 className='text-2xl font-semibold text-primary'>
+              MeDoc Doctor Panel
+            </h1>
 
-        <button
+            <p className='text-sm text-gray-500'>
+              Welcome Dr. {doctor?.name}
+            </p>
 
-          onClick={() => navigate("/doctor-dashboard")}
+          </div>
 
-          className='px-4 py-2 rounded border hover:bg-primary hover:text-white transition-all'
-        >
-          Dashboard
-        </button>
+        </div>
 
-        <button
+        {/* Right Side */}
 
-          onClick={logoutDoctor}
+        <div className='flex items-center gap-2 cursor-pointer group relative'>
 
-          className='px-4 py-2 rounded bg-red-500 text-white hover:bg-red-600 transition-all'
-        >
-          Logout
-        </button>
+          <div className='w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-semibold text-lg'>
+            {doctor?.name?.charAt(0)}
+          </div>
+
+          <div className='absolute top-0 right-0 pt-14 text-base font-medium text-gray-600 z-20 hidden group-hover:block'>
+
+            <div className='min-w-48 bg-stone-100 rounded flex flex-col gap-4 p-4 shadow-md'>
+
+              <p className='font-semibold text-black'>
+                Dr. {doctor?.name}
+              </p>
+
+              <p
+
+                onClick={() => navigate("/doctor-profile")}
+
+                className='hover:text-black cursor-pointer'
+
+              >
+                My Profile
+              </p>
+
+              <p
+
+                onClick={logoutDoctor}
+
+                className='hover:text-black cursor-pointer'
+
+              >
+                Logout
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
 
       </div>
 
