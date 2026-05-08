@@ -15,7 +15,7 @@ const Navbar = () => {
     const { getTotalCartAmount } = useContext(StoreContext);
 
     return (
-        <div className='my-0 md:my-4'>
+        <div className='fixed top-0 left-0 right-0 z-50 bg-white my-0 md:my-4'>
             <div className='navbar'>
                 <img onClick={() => navigate('/')} src={assets.logo} alt="" className="logo" />
                 <ul className='hidden md:flex items-start gap-5 font-medium text-[#00173d]'>
