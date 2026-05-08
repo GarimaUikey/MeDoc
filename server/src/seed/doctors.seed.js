@@ -17,7 +17,7 @@ const seedDoctors = async () => {
     const doctors = [
 
       {
-        name: 'Dr.Anup Shukla',
+        name: 'Anup Shukla',
         email: 'doctor1@gmail.com',
         password: hashedPassword,
         image: 'doc1.png',
@@ -33,7 +33,7 @@ const seedDoctors = async () => {
       },
 
       {
-        name: 'Dr. Riya Malhotra',
+        name: 'Riya Malhotra',
         email: 'doctor2@gmail.com',
         password: hashedPassword,
         image: 'doc2.png',
@@ -49,7 +49,7 @@ const seedDoctors = async () => {
       },
 
       {
-        name: 'Dr. Rajesh Verma',
+        name: 'Rajesh Verma',
         email: 'doctor3@gmail.com',
         password: hashedPassword,
         image: 'doc3.png',
@@ -65,7 +65,7 @@ const seedDoctors = async () => {
       },
 
       {
-        name: 'Dr. Amit Sharma',
+        name: 'Amit Sharma',
         email: 'doctor4@gmail.com',
         password: hashedPassword,
         image: 'doc4.png',
@@ -81,7 +81,7 @@ const seedDoctors = async () => {
       },
 
       {
-        name: 'Dr. Neha Kapoor',
+        name: 'Neha Kapoor',
         email: 'doctor5@gmail.com',
         password: hashedPassword,
         image: 'doc5.png',
@@ -97,7 +97,7 @@ const seedDoctors = async () => {
       },
 
       {
-        name: 'Dr. Rohit Mehta',
+        name: 'Rohit Mehta',
         email: 'doctor6@gmail.com',
         password: hashedPassword,
         image: 'doc6.png',
@@ -113,7 +113,7 @@ const seedDoctors = async () => {
       },
 
       {
-        name: 'Dr. Karan Malhotra',
+        name: 'Karan Malhotra',
         email: 'doctor7@gmail.com',
         password: hashedPassword,
         image: 'doc7.png',
@@ -129,7 +129,7 @@ const seedDoctors = async () => {
       },
 
       {
-        name: 'Dr. Sandeep Nair',
+        name: 'Sandeep Nair',
         email: 'doctor8@gmail.com',
         password: hashedPassword,
         image: 'doc8.png',
@@ -145,7 +145,7 @@ const seedDoctors = async () => {
       },
 
       {
-        name: 'Dr. Pooja Singh',
+        name: 'Pooja Singh',
         email: 'doctor9@gmail.com',
         password: hashedPassword,
         image: 'doc9.png',
@@ -161,7 +161,7 @@ const seedDoctors = async () => {
       },
 
       {
-        name: 'Dr. Vivek Gupta',
+        name: 'Vivek Gupta',
         email: 'doctor10@gmail.com',
         password: hashedPassword,
         image: 'doc10.png',
@@ -177,7 +177,7 @@ const seedDoctors = async () => {
       },
 
       {
-        name: 'Dr. Kamini Mehra',
+        name: 'Kamini Mehra',
         email: 'doctor11@gmail.com',
         password: hashedPassword,
         image: 'doc11.png',
@@ -193,7 +193,7 @@ const seedDoctors = async () => {
       },
 
       {
-        name: 'Dr. Arjun Patel',
+        name: 'Arjun Patel',
         email: 'doctor12@gmail.com',
         password: hashedPassword,
         image: 'doc12.png',
@@ -209,7 +209,7 @@ const seedDoctors = async () => {
       },
 
       {
-        name: 'Dr. Sneha Iyer',
+        name: 'Sneha Iyer',
         email: 'doctor13@gmail.com',
         password: hashedPassword,
         image: 'doc13.png',
@@ -225,7 +225,7 @@ const seedDoctors = async () => {
       },
 
       {
-        name: 'Dr. Nikhil Joshi',
+        name: 'Nikhil Joshi',
         email: 'doctor14@gmail.com',
         password: hashedPassword,
         image: 'doc14.png',
@@ -241,7 +241,7 @@ const seedDoctors = async () => {
       },
 
       {
-        name: 'Dr. Kavita Deshmukh',
+        name: 'Kavita Deshmukh',
         email: 'doctor15@gmail.com',
         password: hashedPassword,
         image: 'doc15.png',
