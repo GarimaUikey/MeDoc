@@ -192,6 +192,73 @@ exports.loginDoctor = async (req, res) => {
   }
 
 };
+
+// UPDATE DOCTOR PROFILE
+exports.updateDoctorProfile = async (req, res) => {
+
+  try {
+
+    const doctorId = req.user.id;
+
+    const {
+
+      name,
+      email,
+      specialization,
+      degree,
+      about,
+      experience,
+      fees,
+      hospital,
+      address
+
+    } = req.body;
+
+    const updatedDoctor = await Doctor.findByIdAndUpdate(
+
+      doctorId,
+
+      {
+        name,
+        email,
+        specialization,
+        degree,
+        about,
+        experience,
+        fees,
+        hospital,
+        address
+      },
+
+      {
+        new: true
+      }
+
+    );
+
+    res.status(200).json({
+
+      success: true,
+
+      message: "Profile updated successfully",
+
+      doctor: updatedDoctor
+
+    });
+
+  } catch (error) {
+
+    res.status(500).json({
+
+      success: false,
+
+      message: error.message
+
+    });
+
+  }
+
+};
 // GET DOCTOR APPOINTMENTS
 exports.getDoctorAppointments = async (req, res) => {
 

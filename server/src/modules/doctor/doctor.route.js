@@ -11,7 +11,8 @@ const {
   signupDoctor,
   updateAppointmentStatus,
   getDoctorAppointments,
-  toggleAvailability
+  toggleAvailability,
+  updateDoctorProfile
 
 } = require("./doctor.controller");
 
@@ -58,5 +59,14 @@ router.get("/all", getAllDoctors);
 // GET SINGLE DOCTOR
 router.get("/:id", getDoctorById);
 
+// Update Doctor Profile //
+router.put(
 
+  "/update-profile",
+
+  authMiddleware(["doctor"]),
+
+  updateDoctorProfile
+
+);
 module.exports = router;
