@@ -12,7 +12,7 @@ const Cart = () => {
 
   return (
     <div className='pt-25 mt-7 mb-18 sm:pt-16 py-10'>
-      <hr className=" h-[1px] bg-gray-200 border-none w-full" />
+      <hr className=" h-1px bg-gray-200 border-none w-full" />
       <div className='mt-4'></div>
     <div className='cart'>
       <div className='cart-items'>

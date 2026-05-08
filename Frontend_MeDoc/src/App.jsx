@@ -20,6 +20,7 @@ import Auth from './pages/Auth'
 import Payments from './pages/Payments'
 import OrderSuccess from './pages/OrderSuccess'
 import DoctorProfile from './pages/DoctorProfile'
+import MyOrders from './pages/MyOrders/MyOrders'
 
 const App = () => {
   const location = useLocation();
@@ -52,6 +53,7 @@ const App = () => {
           <Route path='/myappointments' element={<MyAppointments />} />
           <Route path='/appointment/:docID' element={<Appointment />} />
           <Route path='/ordernow' element={<OrderNow />} />
+          <Route path="/my-orders" element={<MyOrders />} />
         </Routes>
       </div>
       <Footer />

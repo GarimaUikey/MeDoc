@@ -6,7 +6,13 @@ export const StoreContext = createContext(null)
 
 const StoreContextProvider = (props) => {
 
-    const[cartItems,setCartItems]= useState({});
+    const [cartItems, setCartItems] = useState(() => {
+
+    const savedCart = localStorage.getItem("cartItems");
+
+    return savedCart ? JSON.parse(savedCart) : {};
+
+});
 
     const addToCart = (itemId) => {
         if(!cartItems[itemId]){
@@ -33,6 +39,17 @@ const StoreContextProvider = (props) => {
         return totalAmount;
     }
 
+    useEffect(() => {
+
+    localStorage.setItem(
+
+        "cartItems",
+
+        JSON.stringify(cartItems)
+
+    );
+
+}, [cartItems]);
    
     const contextValue = {
         med_list,

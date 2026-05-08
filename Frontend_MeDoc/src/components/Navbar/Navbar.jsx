@@ -78,6 +78,10 @@ const Navbar = () => {
                                                 My Appointments
                                             </p>
 
+                                            <p onClick={() => navigate('/my-orders')}>
+                                             My Orders
+                                            </p>
+  
                                             <p
                                                 onClick={() => {
                                                     localStorage.removeItem("token");

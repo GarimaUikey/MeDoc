@@ -5,6 +5,7 @@ const authRoutes = require("./modules/auth/auth.route");
 const userRoutes = require("./modules/user/user.route");
 const doctorRoutes = require("./modules/doctor/doctor.route");
 const appointmentRoutes = require("./modules/appointment/appointment.route");
+const orderRoutes = require("./modules/order/order.route");
 
 const app = express();
 
@@ -19,7 +20,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/doctor", doctorRoutes);
 app.use("/api/appointment", appointmentRoutes);
-
+app.use("/api/order", orderRoutes);
 
 module.exports = app;
 

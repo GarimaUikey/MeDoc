@@ -101,7 +101,7 @@ const MyProfile = () => {
 
   return (
     <div className='pt-25 mt-7 mb-18 sm:pt-16 py-10'>
-      <hr className=" h-[1px] bg-gray-200 border-none w-full" />
+      <hr className=" h-1px bg-gray-200 border-none w-full" />
       <div className='mt-4 ma-w-lg flex flex-col gap-2 text-sm'>
         <img className='w-36 rounded' src={userData.image} alt="" />
         {
@@ -109,7 +109,7 @@ const MyProfile = () => {
             ? <input className='bg-gray-50 text-3xl font-medium max-w-60 mt-4' type="text" value={userData.name} onChange={e => setUserData(prev => ({ ...prev, name: e.target.value }))} />
             : <p className='font-medium text-3xl text-neutral-800 mt-4'>{userData.name} </p>
         }
-        <hr className='bg-zinc-400 h-[1px] border-none w-1/3' />
+        <hr className='bg-zinc-400 h-1px border-none w-1/3' />
 
         <div>
           <p className='text-neutral-500 underline mt-3'>CONTACT INFORMATION</p>

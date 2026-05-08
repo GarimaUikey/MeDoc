@@ -13,7 +13,7 @@ const OrderNow = () => {
 
   return (
     <div className='pt-25 mt-7 mb-18 sm:pt-16 py-10'>
-      <hr className=" h-[1px] bg-gray-200 border-none w-full" />
+      <hr className=" h-1px bg-gray-200 border-none w-full" />
       <div className='mt-4'>
         <div className="heading"> <h2>Top Medicines Near You</h2> </div>
         

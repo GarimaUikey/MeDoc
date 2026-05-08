@@ -29,7 +29,7 @@ const OrderSuccess = () => {
 
         <button
 
-          onClick={() => navigate("/order-now")}
+          onClick={() => navigate("/OrderNow")}
 
           className='bg-primary text-white px-8 py-3 rounded-xl hover:opacity-90 transition-all duration-300'
 
@@ -38,7 +38,7 @@ const OrderSuccess = () => {
           Continue Shopping
 
         </button>
-
+         
       </div>
 
     </div>
