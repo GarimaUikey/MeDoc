@@ -128,23 +128,48 @@ const MyAppointments = () => {
                 </div>
                 <div></div>
                 <div className='flex flex-col gap-2 justify-end'>
+
                   <button
 
-                    onClick={() => navigate("/payments")}
+                    onClick={() => {
+                      if (item.status !== "Completed") {
+                        navigate("/payments")
+                      }
+                    }}
 
-                    className='text-sm text-stone-500 text-center sm:min-w-48 py-2 border rounded cursor-pointer hover:bg-primary hover:text-white transition-all duration-500'
+                    disabled={item.status === "Completed"}
+
+                    className={`text-sm text-center sm:min-w-48 py-2 border rounded transition-all duration-500
+      ${item.status === "Completed"
+                        ? "bg-gray-200 text-gray-400 cursor-not-allowed"
+                        : "text-stone-500 cursor-pointer hover:bg-primary hover:text-white"
+                      }`
+                    }
 
                   >
 
-                    Pay Online
+                    {item.status === "Completed"
+                      ? "Payment Completed"
+                      : "Pay Online"
+                    }
 
                   </button>
+
                   <button
+
                     onClick={() => cancelAppointment(item._id)}
+
                     className='text-sm text-stone-500 text-center sm:min-w-48 py-2 border rounded cursor-pointer hover:bg-red-600 hover:text-white transition-all duration-500'
+
                   >
-                    Cancel Appointment
+
+                    {item.status === "Completed"
+                      ? "Delete Appointment"
+                      : "Cancel Appointment"
+                    }
+
                   </button>
+
                 </div>
 
               </div>

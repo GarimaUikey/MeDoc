@@ -13,7 +13,7 @@ const DoctorDashboard = () => {
         localStorage.getItem("doctor")
 
     );
-    
+
     const [available, setAvailable] = useState(
 
         doctor?.available
@@ -43,7 +43,7 @@ const DoctorDashboard = () => {
         item => item.status === "Rejected"
 
     ).length;
-    
+
 
     const getAppointments = async () => {
 
@@ -191,8 +191,8 @@ const DoctorDashboard = () => {
                     onClick={toggleAvailability}
 
                     className={`px-5 py-2 rounded-lg text-white mb-6 ${available
-                            ? "bg-green-600"
-                            : "bg-red-600"
+                        ? "bg-green-600"
+                        : "bg-red-600"
                         }`}
 
                 >
@@ -335,38 +335,64 @@ const DoctorDashboard = () => {
                                 </p>
                                 <div className='flex gap-3 mt-4 flex-wrap'>
 
-                                    <button
+                                    {item.status === "Pending" && (
+                                        <>
+                                            <button
 
-                                        onClick={() =>
-                                            updateStatus(item._id, "Approved")
-                                        }
+                                                onClick={() =>
+                                                    updateStatus(item._id, "Approved")
+                                                }
 
-                                        className='px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600'
-                                    >
-                                        Approve
-                                    </button>
+                                                className='px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600'
 
-                                    <button
+                                            >
+                                                Approve
+                                            </button>
 
-                                        onClick={() =>
-                                            updateStatus(item._id, "Completed")
-                                        }
+                                            <button
 
-                                        className='px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600'
-                                    >
-                                        Complete
-                                    </button>
+                                                onClick={() =>
+                                                    updateStatus(item._id, "Rejected")
+                                                }
 
-                                    <button
+                                                className='px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600'
 
-                                        onClick={() =>
-                                            updateStatus(item._id, "Rejected")
-                                        }
+                                            >
+                                                Reject
+                                            </button>
+                                        </>
+                                    )}
 
-                                        className='px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600'
-                                    >
-                                        Reject
-                                    </button>
+                                    {item.status === "Approved" && (
+
+                                        <button
+
+                                            onClick={() =>
+                                                updateStatus(item._id, "Completed")
+                                            }
+
+                                            className='px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600'
+
+                                        >
+                                            Complete
+                                        </button>
+
+                                    )}
+
+                                    {(item.status === "Completed" || item.status === "Rejected") && (
+
+                                        <span className={`px-4 py-2 rounded text-white
+            ${item.status === "Completed"
+                                                ? "bg-blue-500"
+                                                : "bg-red-500"
+                                            }`}
+                                        >
+
+                                            {item.status}
+
+                                        </span>
+
+                                    )}
 
                                 </div>
 
