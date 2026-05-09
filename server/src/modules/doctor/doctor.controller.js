@@ -231,7 +231,7 @@ exports.updateDoctorProfile = async (req, res) => {
       },
 
       {
-        new: true
+        returnDocument: 'after'
       }
 
     );

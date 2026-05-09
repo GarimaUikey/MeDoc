@@ -181,7 +181,7 @@ const AdminOrders = () => {
                                                     className='text-sm sm:text-base'
                                                 >
 
-                                                    • Medicine {item.medicine} × {item.quantity}
+                                                    • Medicine {item.medicineName} × {item.quantity}
 
                                                 </p>
 

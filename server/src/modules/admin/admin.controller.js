@@ -318,7 +318,7 @@ exports.updateOrderStatus = async (req, res) => {
       },
 
       {
-        new: true
+        returnDocument: 'after'
       }
 
     );

@@ -7,12 +7,18 @@ const orderSchema = new mongoose.Schema({
     ref: "User",
     required: true
   },
+
   items: [
     {
-     medicine: {
-  type: String,
-  required: true
-},
+      medicineId: {
+        type: String,
+        required: true
+      },
+
+      medicineName: {
+        type: String,
+        required: true
+      },
       quantity: Number,
       price: Number
     }
