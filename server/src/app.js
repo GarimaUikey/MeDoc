@@ -6,6 +6,7 @@ const userRoutes = require("./modules/user/user.route");
 const doctorRoutes = require("./modules/doctor/doctor.route");
 const appointmentRoutes = require("./modules/appointment/appointment.route");
 const orderRoutes = require("./modules/order/order.route");
+const adminRoutes = require("./modules/admin/admin.routes");
 
 const app = express();
 
@@ -16,6 +17,7 @@ app.use(cors());
 
 
 // ROUTES
+app.use("/admin", adminRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/doctor", doctorRoutes);
