@@ -10,6 +10,8 @@ const AdminDashboard = () => {
 
   );
 
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
   const [stats, setStats] = useState({
 
     totalDoctors: 0,
@@ -61,10 +63,31 @@ const AdminDashboard = () => {
 
     <div className='flex bg-gray-100 min-h-screen'>
 
-      <AdminSidebar />
+      <AdminSidebar
 
-      <div className='ml-64 flex-1 p-8'>
+        sidebarOpen={sidebarOpen}
 
+        setSidebarOpen={setSidebarOpen}
+
+      />
+
+      <div className='lg:ml-64 flex-1 p-4 sm:p-8'>
+
+        <div className='lg:hidden mb-6'>
+
+          <button
+
+            onClick={() => setSidebarOpen(true)}
+
+            className='text-3xl'
+
+          >
+
+            ☰
+
+          </button>
+
+        </div>
         <h1 className='text-4xl font-bold text-primary mb-2'>
           Admin Dashboard
         </h1>

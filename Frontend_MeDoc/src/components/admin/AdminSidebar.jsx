@@ -2,7 +2,7 @@ import React from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { assets } from '../../assets/assets'
 
-const AdminSidebar = () => {
+const AdminSidebar = ({ sidebarOpen, setSidebarOpen }) => {
 
     const navigate = useNavigate();
 
@@ -49,71 +49,133 @@ const AdminSidebar = () => {
 
     return (
 
-        <div className='w-64 min-h-screen bg-white shadow-lg border-r fixed left-0 top-0 pt-8 px-4'>
+        <>
 
-            <div
-                onClick={() => navigate("/admin-dashboard")}
-                className='mb-10 cursor-pointer'
-            >
+            {/* Overlay */}
 
-                <img
-                    src={assets.logo}
-                    alt="MeDoc Logo"
-                    className='w-40'
-                />
+            {
 
-                <h1 className='text-2xl font-bold text-primary mt-2'>
-                    Admin Panel
-                </h1>
+                sidebarOpen && (
 
-            </div>
+                    <div
 
-            <div className='flex flex-col gap-3'>
+                        className='fixed inset-0 bg-black/40 z-40 lg:hidden'
 
-                {
+                        onClick={() => setSidebarOpen(false)}
 
-                    menuItems.map((item, index) => (
+                    />
 
-                        <button
+                )
 
-                            key={index}
+            }
 
-                            onClick={() => navigate(item.path)}
+            {/* Sidebar */}
 
-                            className={`text-left px-4 py-3 rounded-lg transition-all
+            <div className={`
 
-                            ${location.pathname === item.path
+                fixed top-0 left-0 z-50
 
-                                    ? "bg-primary text-white"
+                w-64 min-h-screen
 
-                                    : "hover:bg-gray-100 text-gray-700"
-                                }`}
+                bg-white shadow-lg border-r
 
-                        >
+                px-4 pt-8
 
-                            {item.name}
+                transform transition-transform duration-300
 
-                        </button>
+                ${sidebarOpen
 
-                    ))
+                    ? "translate-x-0"
 
-                }
+                    : "-translate-x-full lg:translate-x-0"}
 
-                <button
+            `}>
 
-                    onClick={logoutAdmin}
+                {/* Logo */}
 
-                    className='mt-10 bg-red-500 text-white px-4 py-3 rounded-lg hover:bg-red-600 transition-all'
+                <div
+
+                    onClick={() => navigate("/admin-dashboard")}
+
+                    className='mb-10 cursor-pointer'
 
                 >
 
-                    Logout
+                    <img
 
-                </button>
+                        src={assets.logo}
+
+                        alt="MeDoc Logo"
+
+                        className='w-40'
+
+                    />
+
+                    <h1 className='text-2xl font-bold text-primary mt-2'>
+                        Admin Panel
+                    </h1>
+
+                </div>
+
+                {/* Menu */}
+
+                <div className='flex flex-col gap-3'>
+
+                    {
+
+                        menuItems.map((item, index) => (
+
+                            <button
+
+                                key={index}
+
+                                onClick={() => {
+
+                                    navigate(item.path);
+
+                                    setSidebarOpen(false);
+
+                                }}
+
+                                className={`
+
+                                text-left px-4 py-3 rounded-lg transition-all
+
+                                ${location.pathname === item.path
+
+                                        ? "bg-primary text-white"
+
+                                        : "hover:bg-gray-100 text-gray-700"}
+
+                                `}
+
+                            >
+
+                                {item.name}
+
+                            </button>
+
+                        ))
+
+                    }
+
+                    <button
+
+                        onClick={logoutAdmin}
+
+                        className='mt-10 bg-red-500 text-white px-4 py-3 rounded-lg hover:bg-red-600 transition-all'
+
+                    >
+
+                        Logout
+
+                    </button>
+
+                </div>
 
             </div>
 
-        </div>
+        </>
 
     )
 

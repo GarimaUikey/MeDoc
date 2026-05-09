@@ -5,6 +5,8 @@ import { toast } from 'react-toastify'
 
 const AdminUsers = () => {
 
+    const [sidebarOpen, setSidebarOpen] = useState(false);
+
     const [users, setUsers] = useState([]);
 
     const fetchUsers = async () => {
@@ -81,9 +83,30 @@ const AdminUsers = () => {
 
     return (
 
-        <div className='flex bg-gray-100 min-h-screen'>
+        <div className='lg:ml-64 flex-1 p-4 sm:p-8'>
 
-            <AdminSidebar />
+            <AdminSidebar
+
+                sidebarOpen={sidebarOpen}
+
+                setSidebarOpen={setSidebarOpen}
+
+            />
+            <div className='lg:hidden mb-6'>
+
+                <button
+
+                    onClick={() => setSidebarOpen(true)}
+
+                    className='text-3xl'
+
+                >
+
+                    ☰
+
+                </button>
+
+            </div>
 
             <div className='ml-64 flex-1 p-8 overflow-x-auto'>
 
