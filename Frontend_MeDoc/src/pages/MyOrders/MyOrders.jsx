@@ -104,7 +104,7 @@ const MyOrders = () => {
 
   const medicineData = med_list.find(
 
-    (med) => med._id === item.medicine
+    (med) => med._id === item.medicineId
 
   );
 
@@ -128,7 +128,7 @@ const MyOrders = () => {
 
           <span className='item-name'>
 
-            {medicineData?.med_name}
+            {item.medicineName}
 
           </span>
 

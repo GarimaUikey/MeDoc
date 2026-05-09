@@ -12,7 +12,8 @@ const {
   updateAppointmentStatus,
   getDoctorAppointments,
   toggleAvailability,
-  updateDoctorProfile
+  updateDoctorProfile,
+  deleteDoctor
 
 } = require("./doctor.controller");
 
@@ -67,6 +68,16 @@ router.put(
   authMiddleware(["doctor"]),
 
   updateDoctorProfile
+
+);
+
+router.delete(
+
+  "/delete/:doctorId",
+
+  authMiddleware(["admin"]),
+
+  deleteDoctor
 
 );
 module.exports = router;
