@@ -303,20 +303,26 @@ exports.updateAppointmentStatus = async (req, res) => {
     const { appointmentId } = req.params;
 
     const { status } = req.body;
+    let updateData = { status };
+
+if (status === "Approved") {
+
+  updateData.meetingLink =
+    `https://meet.jit.si/medoc-${appointmentId}`;
+
+}
 
     const appointment = await Appointment.findByIdAndUpdate(
 
-      appointmentId,
+  appointmentId,
 
-      {
-        status
-      },
+  updateData,
 
-      {
-        returnDocument: 'after'
-      }
+  {
+    new: true
+  }
 
-    );
+);
 
     res.status(200).json({
 
@@ -412,6 +418,53 @@ exports.deleteDoctor = async (req, res) => {
       success: true,
 
       message: "Doctor deleted successfully"
+
+    });
+
+  } catch (error) {
+
+    res.status(500).json({
+
+      success: false,
+
+      message: error.message
+
+    });
+
+  }
+
+};
+
+//API FOR MEETING LINK
+exports.addMeetingLink = async (req, res) => {
+
+  try {
+
+    const { appointmentId } = req.params;
+
+    const { meetingLink } = req.body;
+
+    const appointment = await Appointment.findByIdAndUpdate(
+
+      appointmentId,
+
+      {
+        meetingLink
+      },
+
+      {
+        new: true
+      }
+
+    );
+
+    res.status(200).json({
+
+      success: true,
+
+      message: "Meeting link added",
+
+      appointment
 
     });
 

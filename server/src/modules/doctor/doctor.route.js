@@ -1,3 +1,4 @@
+
 const express = require("express");
 const authMiddleware = require("../../middleware/auth.middleware");
 
@@ -13,7 +14,8 @@ const {
   getDoctorAppointments,
   toggleAvailability,
   updateDoctorProfile,
-  deleteDoctor
+  deleteDoctor,
+  addMeetingLink
 
 } = require("./doctor.controller");
 
@@ -39,6 +41,16 @@ router.put(
   authMiddleware(["doctor"]),
 
   updateAppointmentStatus
+
+);
+
+router.put(
+
+  "/meeting-link/:appointmentId",
+
+  authMiddleware(["doctor"]),
+
+  addMeetingLink
 
 );
 

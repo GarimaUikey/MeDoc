@@ -11,7 +11,8 @@ exports.bookAppointment = async (req, res) => {
             doctorId,
             slotDate,
             slotTime,
-            amount
+            amount,
+            consultationType
         } = req.body;
         
         // doctor availablity
@@ -63,7 +64,8 @@ exports.bookAppointment = async (req, res) => {
             doctorId,
             slotDate,
             slotTime,
-            amount
+            amount,
+            consultationType
 
         });
 

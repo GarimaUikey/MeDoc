@@ -3,47 +3,33 @@ import axios from '../utils/axios'
 import { toast } from 'react-toastify'
 import DoctorNavbar from '../components/Navbar/DoctorNavbar'
 
-
 const DoctorDashboard = () => {
 
     const [appointments, setAppointments] = useState([]);
 
     const doctor = JSON.parse(
-
         localStorage.getItem("doctor")
-
     );
 
     const [available, setAvailable] = useState(
-
         doctor?.available
-
     );
 
     const pendingAppointments = appointments.filter(
-
         item => item.status === "Pending"
-
     ).length;
 
     const approvedAppointments = appointments.filter(
-
         item => item.status === "Approved"
-
     ).length;
 
     const completedAppointments = appointments.filter(
-
         item => item.status === "Completed"
-
     ).length;
 
     const rejectedAppointments = appointments.filter(
-
         item => item.status === "Rejected"
-
     ).length;
-
 
     const getAppointments = async () => {
 
@@ -78,6 +64,7 @@ const DoctorDashboard = () => {
         getAppointments();
 
     }, []);
+
     const updateStatus = async (
 
         appointmentId,
@@ -88,9 +75,7 @@ const DoctorDashboard = () => {
         try {
 
             const token = localStorage.getItem(
-
                 "doctorToken"
-
             );
 
             const response = await axios.put(
@@ -126,9 +111,7 @@ const DoctorDashboard = () => {
         try {
 
             const token = localStorage.getItem(
-
                 "doctorToken"
-
             );
 
             const response = await axios.put(
@@ -147,7 +130,6 @@ const DoctorDashboard = () => {
 
             setAvailable(response.data.available);
 
-            // update localStorage doctor
             const updatedDoctor = {
 
                 ...doctor,
@@ -157,11 +139,8 @@ const DoctorDashboard = () => {
             };
 
             localStorage.setItem(
-
                 "doctor",
-
                 JSON.stringify(updatedDoctor)
-
             );
 
             toast.success(response.data.message);
@@ -190,10 +169,11 @@ const DoctorDashboard = () => {
 
                     onClick={toggleAvailability}
 
-                    className={`px-5 py-2 rounded-lg text-white mb-6 ${available
-                        ? "bg-green-600"
-                        : "bg-red-600"
-                        }`}
+                    className={`px-5 py-2 rounded-lg text-white mb-6 ${
+                        available
+                            ? "bg-green-600"
+                            : "bg-red-600"
+                    }`}
 
                 >
 
@@ -322,7 +302,31 @@ const DoctorDashboard = () => {
 
                                     {item.slotTime}
                                 </p>
+
                                 <p className='mt-2'>
+
+                                    <span className='font-semibold'>
+                                        Consultation:
+                                    </span>
+
+                                    {" "}
+
+                                    <span className={`px-3 py-1 rounded-full text-sm text-white
+                                        ${
+                                            item.consultationType === "Live"
+                                                ? "bg-purple-600"
+                                                : "bg-green-600"
+                                        }`}
+                                    >
+
+                                        {item.consultationType}
+
+                                    </span>
+
+                                </p>
+
+                                <p className='mt-2'>
+
                                     <span className='font-semibold'>
                                         Status:
                                     </span>
@@ -332,11 +336,39 @@ const DoctorDashboard = () => {
                                     <span className='text-primary'>
                                         {item.status}
                                     </span>
+
                                 </p>
+
+                                {
+                                    item.consultationType === "Live"
+                                    && item.meetingLink
+                                    && item.status === "Approved"
+                                    && (
+
+                                        <a
+
+                                            href={item.meetingLink}
+
+                                            target="_blank"
+
+                                            rel="noreferrer"
+
+                                            className='inline-block mt-4 bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition-all duration-300'
+
+                                        >
+
+                                            Join Session
+
+                                        </a>
+
+                                    )
+                                }
+
                                 <div className='flex gap-3 mt-4 flex-wrap'>
 
                                     {item.status === "Pending" && (
                                         <>
+
                                             <button
 
                                                 onClick={() =>
@@ -346,7 +378,9 @@ const DoctorDashboard = () => {
                                                 className='px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600'
 
                                             >
+
                                                 Approve
+
                                             </button>
 
                                             <button
@@ -358,8 +392,11 @@ const DoctorDashboard = () => {
                                                 className='px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600'
 
                                             >
+
                                                 Reject
+
                                             </button>
+
                                         </>
                                     )}
 
@@ -374,7 +411,9 @@ const DoctorDashboard = () => {
                                             className='px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600'
 
                                         >
+
                                             Complete
+
                                         </button>
 
                                     )}
@@ -382,9 +421,10 @@ const DoctorDashboard = () => {
                                     {(item.status === "Completed" || item.status === "Rejected") && (
 
                                         <span className={`px-4 py-2 rounded text-white
-            ${item.status === "Completed"
-                                                ? "bg-blue-500"
-                                                : "bg-red-500"
+                                            ${
+                                                item.status === "Completed"
+                                                    ? "bg-blue-500"
+                                                    : "bg-red-500"
                                             }`}
                                         >
 
@@ -408,7 +448,6 @@ const DoctorDashboard = () => {
         </>
 
     )
-
 
 }
 

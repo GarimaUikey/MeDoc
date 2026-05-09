@@ -98,6 +98,8 @@ const Appointment = () => {
 
       }
 
+      console.log(consultationType);
+
       const response = await axios.post(
 
         "/appointment/book",
@@ -213,45 +215,59 @@ const Appointment = () => {
 
   <div className='flex gap-4'>
 
-    <button type="button"
+   <button
 
-      onClick={() => setConsultationType("Physical")}
+  type="button"
 
-      className={`px-5 py-2 rounded-full border transition-all duration-300
+  onClick={(e) => {
 
-      ${consultationType === "Physical"
+    e.preventDefault();
+    setConsultationType("Physical");
 
-        ? "bg-primary text-white"
+  }}
 
-        : "border-gray-300 text-gray-700"
+  className={`px-5 py-2 rounded-full border transition-all duration-300
 
-      }`}
+  ${consultationType === "Physical"
 
-    >
+    ? "bg-primary text-white"
 
-      Physical
+    : "border-gray-300 text-gray-700"
 
-    </button>
+  }`}
 
-    <button type="button"
+>
 
-      onClick={() => setConsultationType("Live")}
+  Physical
 
-      className={`px-5 py-2 rounded-full border transition-all duration-300
+</button>
 
-      ${consultationType === "Live"
+    <button
 
-        ? "bg-primary text-white"
+  type="button"
 
-        : "border-gray-300 text-gray-700"
+  onClick={(e) => {
 
-      }`}
+    e.preventDefault();
+    setConsultationType("Live");
 
-    >
+  }}
 
-      Live Session
+  className={`px-5 py-2 rounded-full border transition-all duration-300
 
-    </button>
+  ${consultationType === "Live"
+
+    ? "bg-primary text-white"
+
+    : "border-gray-300 text-gray-700"
+
+  }`}
+
+>
+
+  Live Session
+
+</button>
 
   </div>
 

@@ -93,41 +93,137 @@ const MyAppointments = () => {
   }, []);
 
   return (
-    <div className='pt-25 mt-7 mb-18 sm:pt-16 py-10'>
-      <hr className=" h-[1px] bg-gray-200 border-none w-full" />
-      <div className='mt-4'>
-        <p className='pb-3  mt-12 font-medium text-zinc-600 text-2xl border-b'>My Appointments</p>
-        <div>
-          {appointments
+   
+  <div className='pt-25 mt-7 mb-18 sm:pt-16 py-10 px-4 sm:px-8'>
 
+    <hr className="h-[1px] bg-gray-200 border-none w-full" />
+
+    <div className='mt-10'>
+
+      <h1 className='text-3xl font-semibold text-gray-800 mb-8'>
+        My Appointments
+      </h1>
+
+      <div>
+
+        {
+          appointments
             .filter(item => item.doctorId)
-
             .map((item, index) => (
-              <div className='grid grid-cols-[1fr_2fr] gap-4 sm:flex sm:gap-6 py-2 border-b' key={index}>
-                <div>
-                  <img className='w-32 bg-indigo-50' src={doctorImages[item.doctorId.image]} alt="" />
+
+              <div
+                key={index}
+                className='bg-white border border-gray-200 rounded-2xl shadow-sm p-5 mb-5 flex flex-col lg:flex-row gap-6 hover:shadow-md transition-all duration-300'
+              >
+
+                {/* Doctor Image */}
+                <div className='flex justify-center'>
+                  <img
+                    className='w-32 h-32 object-cover rounded-2xl bg-indigo-50'
+                    src={doctorImages[item.doctorId.image]}
+                    alt=""
+                  />
                 </div>
-                <div className='flex-1 text-sm text-zinc-600'>
-                  <p className='text-neutral-800 font-semibold '>{item.doctorId.name} </p>
-                  <p>{item.doctorId.specialization} </p>
-                  <p className='text-zinc-700 font-medium mt-1'> Address: </p>
-                  <p className='text-xs'>{item.doctorId.address.line1} </p>
-                  <p className='text-xs'>{item.doctorId.address.line2} </p>
-                  <p className='text-xs mt-1'><span className='text-sm text-neutral-700 font-medium' >Date & Time: </span> {new Date(item.slotDate).toDateString()} | {item.slotTime} </p>
-                  <p className='text-xs mt-2'>
 
-                    <span className='text-sm text-neutral-700 font-medium'>
-                      Status:
-                    </span>
+                {/* Doctor Details */}
+                <div className='flex-1 text-sm text-gray-600'>
 
-                    <span className='text-primary ml-1'>
-                      {item.status}
-                    </span>
+                  <h2 className='text-2xl font-semibold text-gray-800 mb-1'>
+                    {item.doctorId.name}
+                  </h2>
 
+                  <p className='text-primary font-medium mb-3'>
+                    {item.doctorId.specialization}
                   </p>
+
+                  <div className='space-y-2'>
+
+                    <p>
+                      <span className='font-semibold text-gray-700'>
+                        Address:
+                      </span>{" "}
+                      {item.doctorId.address.line1},{" "}
+                      {item.doctorId.address.line2}
+                    </p>
+
+                    <p>
+                      <span className='font-semibold text-gray-700'>
+                        Date & Time:
+                      </span>{" "}
+                      {new Date(item.slotDate).toDateString()} | {item.slotTime}
+                    </p>
+
+                    {/* Consultation Badge */}
+                    <div className='flex items-center gap-2 flex-wrap'>
+
+                      <span className='font-semibold text-gray-700'>
+                        Consultation:
+                      </span>
+
+                      <span
+                        className={`px-3 py-1 rounded-full text-xs font-medium text-white
+                        ${
+                          item.consultationType === "Live"
+                            ? "bg-purple-600"
+                            : "bg-green-600"
+                        }`}
+                      >
+                        {item.consultationType}
+                      </span>
+
+                    </div>
+
+                    {/* Status Badge */}
+                    <div className='flex items-center gap-2 flex-wrap'>
+
+                      <span className='font-semibold text-gray-700'>
+                        Status:
+                      </span>
+
+                      <span
+                        className={`px-3 py-1 rounded-full text-xs font-medium text-white
+                        ${
+                          item.status === "Approved"
+                            ? "bg-blue-600"
+                            : item.status === "Completed"
+                            ? "bg-green-600"
+                            : item.status === "Rejected"
+                            ? "bg-red-600"
+                            : "bg-yellow-500"
+                        }`}
+                      >
+                        {item.status}
+                      </span>
+
+                    </div>
+
+                    {/* Join Live Session */}
+                    {
+                      item.consultationType === "Live"
+                      && item.status === "Approved"
+                      && item.meetingLink
+                      && (
+                        <div className='pt-2'>
+
+                          <a
+                            href={item.meetingLink}
+                            target="_blank"
+                            rel="noreferrer"
+                            className='inline-block bg-purple-600 hover:bg-purple-700 !text-white px-5 py-2 rounded-xl font-medium transition-all duration-300'
+                          >
+                            Join Live Session
+                          </a>
+
+                        </div>
+                      )
+                    }
+
+                  </div>
+
                 </div>
-                <div></div>
-                <div className='flex flex-col gap-2 justify-end'>
+
+                {/* Action Buttons */}
+                <div className='flex flex-col justify-center gap-3 lg:w-52'>
 
                   <button
 
@@ -139,18 +235,18 @@ const MyAppointments = () => {
 
                     disabled={item.status === "Completed"}
 
-                    className={`text-sm text-center sm:min-w-48 py-2 border rounded transition-all duration-500
-      ${item.status === "Completed"
+                    className={`py-3 rounded-xl font-medium transition-all duration-300 border
+                    ${
+                      item.status === "Completed"
                         ? "bg-gray-200 text-gray-400 cursor-not-allowed"
-                        : "text-stone-500 cursor-pointer hover:bg-primary hover:text-white"
-                      }`
-                    }
-
+                        : "hover:bg-primary hover:text-white text-gray-700"
+                    }`}
                   >
 
-                    {item.status === "Completed"
-                      ? "Payment Completed"
-                      : "Pay Online"
+                    {
+                      item.status === "Completed"
+                        ? "Payment Completed"
+                        : "Pay Online"
                     }
 
                   </button>
@@ -159,13 +255,14 @@ const MyAppointments = () => {
 
                     onClick={() => cancelAppointment(item._id)}
 
-                    className='text-sm text-stone-500 text-center sm:min-w-48 py-2 border rounded cursor-pointer hover:bg-red-600 hover:text-white transition-all duration-500'
+                    className='py-3 rounded-xl font-medium border text-gray-700 hover:bg-red-600 hover:text-white transition-all duration-300'
 
                   >
 
-                    {item.status === "Completed"
-                      ? "Delete Appointment"
-                      : "Cancel Appointment"
+                    {
+                      item.status === "Completed"
+                        ? "Delete Appointment"
+                        : "Cancel Appointment"
                     }
 
                   </button>
@@ -174,16 +271,18 @@ const MyAppointments = () => {
 
               </div>
 
-            ))}
-
-        </div>
-
+            ))
+        }
 
       </div>
+
     </div>
 
+  </div>
+)
 
-  )
+
+  
 }
 
 export default MyAppointments
