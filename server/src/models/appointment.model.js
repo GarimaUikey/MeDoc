@@ -23,7 +23,23 @@ const appointmentSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+consultationType: {
 
+  type: String,
+
+  enum: ["Physical", "Live"],
+
+  default: "Physical"
+
+},
+
+meetingLink: {
+
+  type: String,
+
+  default: ""
+
+},
   amount: {
     type: Number,
     required: true

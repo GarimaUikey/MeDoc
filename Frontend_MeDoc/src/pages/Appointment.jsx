@@ -16,6 +16,7 @@ const Appointment = () => {
   const [docSlots, setDocSlots] = useState([])
   const [slotIndex, setSlotIndex] = useState(0)
   const [slotTime, setSlotTime] = useState('')
+  const [consultationType, setConsultationType] = useState("Physical")
 
   const fetchDocInfo = async () => {
     const docInfo = doctors.find(doc => doc._id === docID)
@@ -106,7 +107,8 @@ const Appointment = () => {
           doctorId: docInfo._id,
           slotDate: docSlots[slotIndex][0].datetime,
           slotTime,
-          amount: docInfo.fees
+          amount: docInfo.fees,
+          consultationType
         },
 
         {
@@ -201,7 +203,61 @@ const Appointment = () => {
             ))
           }
         </div>
+        <div className='mt-5'>
+
+  <p className='mb-3 text-gray-700'>
+
+    Consultation Type
+
+  </p>
+
+  <div className='flex gap-4'>
+
+    <button type="button"
+
+      onClick={() => setConsultationType("Physical")}
+
+      className={`px-5 py-2 rounded-full border transition-all duration-300
+
+      ${consultationType === "Physical"
+
+        ? "bg-primary text-white"
+
+        : "border-gray-300 text-gray-700"
+
+      }`}
+
+    >
+
+      Physical
+
+    </button>
+
+    <button type="button"
+
+      onClick={() => setConsultationType("Live")}
+
+      className={`px-5 py-2 rounded-full border transition-all duration-300
+
+      ${consultationType === "Live"
+
+        ? "bg-primary text-white"
+
+        : "border-gray-300 text-gray-700"
+
+      }`}
+
+    >
+
+      Live Session
+
+    </button>
+
+  </div>
+
+</div>
         <button
+        type="button"
 
           onClick={docInfo.available
             ? bookAppointment
