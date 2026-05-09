@@ -393,3 +393,38 @@ exports.getDoctorById = async (req, res) => {
   }
 
 };
+
+// DELETE DOCTOR
+exports.deleteDoctor = async (req, res) => {
+
+  try {
+
+    const { doctorId } = req.params;
+
+    await Doctor.findByIdAndDelete(
+
+      doctorId
+
+    );
+
+    res.status(200).json({
+
+      success: true,
+
+      message: "Doctor deleted successfully"
+
+    });
+
+  } catch (error) {
+
+    res.status(500).json({
+
+      success: false,
+
+      message: error.message
+
+    });
+
+  }
+
+};

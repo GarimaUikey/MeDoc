@@ -21,6 +21,12 @@ import Payments from './pages/Payments'
 import OrderSuccess from './pages/OrderSuccess'
 import DoctorProfile from './pages/DoctorProfile'
 import MyOrders from './pages/MyOrders/MyOrders'
+import AdminLogin from './pages/AdminLogin'
+import AdminDashboard from './pages/AdminDashboard'
+import AdminDoctors from './pages/AdminDoctors'
+import AdminAppointments from './pages/AdminAppointments'
+import AdminUsers from './pages/AdminUsers'
+
 
 const App = () => {
   const location = useLocation();
@@ -28,17 +34,26 @@ const App = () => {
   const isDoctorPage =
 
     location.pathname.includes("doctor");
+
+  const isAdminPage =
+
+    location.pathname.includes("admin");
   return (
     <>
       <div className='mx-4 sm:mx-[10%] '  >
         {
-          !isDoctorPage && <Navbar />
+          !isDoctorPage && !isAdminPage && <Navbar />
         }
         <Routes>
+          <Route path='/admin-users' element={<AdminUsers />} />
+          <Route path='/admin-appointments' element={<AdminAppointments />} />
+          <Route path='/admin-doctors' element={<AdminDoctors />} />
+          <Route path='/admin-dashboard' element={<AdminDashboard />} />
           <Route path='/login' element={<Auth />} />
           <Route path='/doctor-dashboard' element={<DoctorDashboard />} />
           {/* <Route path='/doctor-auth' element={<DoctorAuth />} /> */}
           <Route path='/doctor-profile' element={<DoctorProfile />} />
+          <Route path='/admin-login' element={<AdminLogin />} />
           <Route path='/' element={<Home />} />
           <Route path='/payments' element={<Payments />} />
           <Route path='/cart' element={<Cart />} />
