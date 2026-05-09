@@ -110,13 +110,13 @@ const AdminAppointments = () => {
                     </button>
 
                 </div>
-                <h1 className='text-4xl font-bold text-primary mb-8'>
+                <h1 className='text-2xl sm:text-4xl font-bold text-primary mb-8 break-words'>
                     Appointments Management
                 </h1>
 
-                <div className='bg-white rounded-2xl shadow-md overflow-hidden'>
+                <div className='bg-white rounded-2xl shadow-md overflow-x-auto'>
 
-                    <table className='w-full'>
+                    <table className='min-w-[700px] w-full'>
 
                         <thead className='bg-primary text-white'>
 

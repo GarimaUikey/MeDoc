@@ -266,3 +266,80 @@ exports.deleteUser = async (req, res) => {
   }
 
 };
+// GET ALL ORDERS
+
+exports.getAllOrders = async (req, res) => {
+
+  try {
+
+    const orders = await Order.find()
+
+      .populate("user")
+
+      .sort({ createdAt: -1 });
+
+    res.status(200).json({
+
+      success: true,
+      orders
+
+    });
+
+  } catch (error) {
+
+    res.status(500).json({
+
+      success: false,
+      message: error.message
+
+    });
+
+  }
+
+};
+
+
+// UPDATE ORDER STATUS
+
+exports.updateOrderStatus = async (req, res) => {
+
+  try {
+
+    const { orderId } = req.params;
+
+    const { status } = req.body;
+
+    const order = await Order.findByIdAndUpdate(
+
+      orderId,
+
+      {
+        status
+      },
+
+      {
+        new: true
+      }
+
+    );
+
+    res.status(200).json({
+
+      success: true,
+      message: "Order status updated",
+      order
+
+    });
+
+  } catch (error) {
+
+    res.status(500).json({
+
+      success: false,
+      message: error.message
+
+    });
+
+  }
+
+};

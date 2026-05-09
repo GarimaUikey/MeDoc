@@ -83,7 +83,7 @@ const AdminUsers = () => {
 
     return (
 
-        <div className='lg:ml-64 flex-1 p-4 sm:p-8'>
+        <div className='flex bg-gray-100 min-h-screen'>
 
             <AdminSidebar
 
@@ -92,6 +92,7 @@ const AdminUsers = () => {
                 setSidebarOpen={setSidebarOpen}
 
             />
+
             <div className='lg:hidden mb-6'>
 
                 <button
@@ -108,15 +109,15 @@ const AdminUsers = () => {
 
             </div>
 
-            <div className='ml-64 flex-1 p-8 overflow-x-auto'>
+            <div className='lg:ml-64 flex-1 p-4 sm:p-8 overflow-x-auto'>
 
-                <h1 className='text-4xl font-bold text-primary mb-8'>
+                <h1 className='text-2xl sm:text-4xl font-bold text-primary mb-8 break-words'>
                     Users Management
                 </h1>
 
-                <div className='bg-white rounded-2xl shadow-md overflow-hidden'>
+                <div className='bg-white rounded-2xl shadow-md overflow-x-auto'>
 
-                    <table className='w-full'>
+                    <table className='min-w-[600px] w-full'>
 
                         <thead className='bg-primary text-white'>
 
@@ -185,6 +186,8 @@ const AdminUsers = () => {
                         </tbody>
 
                     </table>
+
+
 
                 </div>
 

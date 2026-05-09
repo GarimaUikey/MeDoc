@@ -9,7 +9,9 @@ const {
   getAllAppointments,
   deleteAppointment,
   getAllUsers,
-  deleteUser
+  deleteUser,
+  getAllOrders,
+  updateOrderStatus
 
 } = require("./admin.controller");
 
@@ -66,6 +68,30 @@ router.delete(
   authMiddleware(["admin"]),
 
   deleteUser
+
+);
+// GET ALL ORDERS
+
+router.get(
+
+  "/orders",
+
+  authMiddleware(["admin"]),
+
+  getAllOrders
+
+);
+
+
+// UPDATE ORDER STATUS
+
+router.put(
+
+  "/order-status/:orderId",
+
+  authMiddleware(["admin"]),
+
+  updateOrderStatus
 
 );
 module.exports = router;

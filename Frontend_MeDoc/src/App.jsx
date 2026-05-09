@@ -29,6 +29,7 @@ import AdminUsers from './pages/AdminUsers'
 import ProtectedAdminRoute from './components/protected/ProtectedAdminRoute'
 import ProtectedDoctorRoute from './components/protected/ProtectedDoctorRoute'
 import ProtectedUserRoute from './components/protected/ProtectedUserRoute'
+import AdminOrders from './pages/AdminOrders'
 
 
 const App = () => {
@@ -48,6 +49,7 @@ const App = () => {
           !isDoctorPage && !isAdminPage && <Navbar />
         }
         <Routes>
+          <Route path='/admin-orders' element={<ProtectedAdminRoute><AdminOrders /></ProtectedAdminRoute>} />
           <Route path='/admin-users' element={<ProtectedAdminRoute><AdminUsers /></ProtectedAdminRoute>} />
           <Route path='/admin-appointments' element={<ProtectedAdminRoute><AdminAppointments /></ProtectedAdminRoute>} />
           <Route path='/admin-doctors' element={<ProtectedAdminRoute><AdminDoctors /></ProtectedAdminRoute>} />

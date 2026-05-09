@@ -88,7 +88,7 @@ const AdminDashboard = () => {
           </button>
 
         </div>
-        <h1 className='text-4xl font-bold text-primary mb-2'>
+        <h1 className='text-2xl sm:text-4xl font-bold text-primary mb-2 break-words'>
           Admin Dashboard
         </h1>
 
@@ -96,7 +96,7 @@ const AdminDashboard = () => {
           Welcome {admin?.name}
         </p>
 
-        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6'>
+        <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6'>
 
           <div className='bg-white rounded-2xl shadow-md p-6'>
             <h2 className='text-gray-500 mb-2'>

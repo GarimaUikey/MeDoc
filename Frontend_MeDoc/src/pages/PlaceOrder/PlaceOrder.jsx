@@ -60,7 +60,7 @@ const onChangeHandler = (event) => {
 
         orderItems.push({
 
-          medicine: item._id,
+          medicine: item.med_name,
           quantity: cartItems[item._id],
           price: item.price
 

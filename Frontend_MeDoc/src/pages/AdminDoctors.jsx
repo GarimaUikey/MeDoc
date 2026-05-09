@@ -88,19 +88,19 @@ const AdminDoctors = () => {
 
                 >
 
-                    ☰
+                  ☰  
 
                 </button>
 
             </div>
 
-            <div className='ml-64 flex-1 p-8'>
+            
 
-                <h1 className='text-4xl font-bold text-primary mb-8'>
+                <h1 className='text-2xl sm:text-4xl font-bold text-primary mb-8 break-words'>
                     Doctors Management
                 </h1>
 
-                <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6'>
+                <div className='grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6'>
 
                     {
 
@@ -110,7 +110,7 @@ const AdminDoctors = () => {
 
                                 key={index}
 
-                                className='bg-white rounded-2xl shadow-md p-6'
+                                className='bg-white rounded-2xl shadow-md p-5 overflow-hidden'
 
                             >
 
@@ -130,7 +130,7 @@ const AdminDoctors = () => {
                                     Fees: ₹{doctor.fees}
                                 </p>
 
-                                <div className='flex items-center justify-between'>
+                                <div className='flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between'>
 
                                     <span className={`px-3 py-1 rounded-full text-sm
 
@@ -175,7 +175,7 @@ const AdminDoctors = () => {
 
                 </div>
 
-            </div>
+            
 
         </div>
 
