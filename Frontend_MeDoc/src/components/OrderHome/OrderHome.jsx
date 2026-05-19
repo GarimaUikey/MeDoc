@@ -28,7 +28,7 @@ const OrderHome = () => {
 
                 <div className="med-display-list w-full flex items-center gap-4 justify-center">
                     {
-                        med_list.slice(0, 4).map((item, index) => {
+                        med_list.slice(0, 5).map((item, index) => {
 
                             return (<MedItem key={index} id={item._id} med_name={item.med_name} description={item.description} price={item.price} image={item.image} />
                             )

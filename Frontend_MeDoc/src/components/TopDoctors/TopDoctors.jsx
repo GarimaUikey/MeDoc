@@ -15,8 +15,8 @@ const TopDoctors = () => {
         <div className='flex flex-col items-center my-5 gap-4  text-gray-900 '>
             <h1 className='text-3xl font-medium'> Top Doctors for Appointment</h1>
             <p className='sm:w-1/3 text-center text-sm'>Schedule your appointment hassle-free</p>
-            <div className='w-full grid grid-cols-auto gap-4 pt-5 gap-y-6 px-3 sm:px-0 justify-center' >
-                {doctors.slice(0, 3).map((item, index) => (
+            <div className='w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 pt-5'>
+                {doctors.slice(0, 5).map((item, index) => (
 
                     <div
 
@@ -84,7 +84,7 @@ const TopDoctors = () => {
 
                             </div>
                             <p className='text-gray-900 text-lg  font-medium'>{item.name}</p>
-                            <p className='text-gray-600 text-sm'>{item.speciality}</p>
+                            <p className='text-gray-600 text-sm'>{item.specialization}</p>
                         </div>
 
                     </div>
