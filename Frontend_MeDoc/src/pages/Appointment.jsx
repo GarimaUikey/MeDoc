@@ -207,73 +207,73 @@ const Appointment = () => {
         </div>
         <div className='mt-5'>
 
-  <p className='mb-3 text-gray-700'>
+          <p className='mb-3 text-gray-700'>
 
-    Consultation Type
+            Consultation Type
 
-  </p>
+          </p>
 
-  <div className='flex gap-4'>
+          <div className='flex gap-4'>
 
-   <button
+            <button
 
-  type="button"
+              type="button"
 
-  onClick={(e) => {
+              onClick={(e) => {
 
-    e.preventDefault();
-    setConsultationType("Physical");
+                e.preventDefault();
+                setConsultationType("Physical");
 
-  }}
+              }}
 
-  className={`px-5 py-2 rounded-full border transition-all duration-300
+              className={`px-5 py-2 rounded-full border transition-all duration-300
 
   ${consultationType === "Physical"
 
-    ? "bg-primary text-white"
+                  ? "bg-primary text-white"
 
-    : "border-gray-300 text-gray-700"
+                  : "border-gray-300 text-gray-700"
 
-  }`}
+                }`}
 
->
+            >
 
-  Physical
+              Physical
 
-</button>
+            </button>
 
-    <button
+            <button
 
-  type="button"
+              type="button"
 
-  onClick={(e) => {
+              onClick={(e) => {
 
-    e.preventDefault();
-    setConsultationType("Live");
+                e.preventDefault();
+                setConsultationType("Live");
 
-  }}
+              }}
 
-  className={`px-5 py-2 rounded-full border transition-all duration-300
+              className={`px-5 py-2 rounded-full border transition-all duration-300
 
   ${consultationType === "Live"
 
-    ? "bg-primary text-white"
+                  ? "bg-primary text-white"
 
-    : "border-gray-300 text-gray-700"
+                  : "border-gray-300 text-gray-700"
 
-  }`}
+                }`}
 
->
+            >
 
-  Live Session
+              Live Session
 
-</button>
+            </button>
 
-  </div>
+          </div>
 
-</div>
+        </div>
         <button
-        type="button"
+          type="button"
 
           onClick={docInfo.available
             ? bookAppointment
@@ -284,7 +284,7 @@ const Appointment = () => {
 
           className={`
 
-    w-full py-3 rounded-lg text-white font-medium transition-all duration-300
+    w-full py-3 mt-8 mb-12 rounded-lg text-white font-medium transition-all duration-300
 
     ${docInfo.available
               ? "bg-primary hover:bg-[#1f5dc5] cursor-pointer"
