@@ -75,9 +75,9 @@ const AdminSidebar = ({ sidebarOpen, setSidebarOpen }) => {
 
                 fixed top-0 left-0 z-50
 
-                w-64 min-h-screen
+                w-56 h-screen
 
-                bg-white shadow-lg border-r
+                bg-white shadow-lg
 
                 px-4 pt-8
 

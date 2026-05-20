@@ -1,65 +1,155 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 @import "tailwindcss";
 
-* {
-   box-sizing: border-box;
-  font-family: 'Outfit', sans-serif;
+/* Global Reset */
+
+html,
+body,
+#root {
+
+  margin: 0;
+  padding: 0;
+
+  width: 100%;
+  min-height: 100vh;
+
+  overflow-x: hidden;
+
 }
 
-/* Smooth horizontal scroll */
+/* Universal */
+
+* {
+
+  box-sizing: border-box;
+
+  font-family: 'Outfit', sans-serif;
+
+}
+
+/* Body */
+
+body {
+
+  min-height: 100vh;
+
+  background-color: #ffffff;
+
+}
+
+/* Links */
+
+a {
+
+  text-decoration: none;
+
+  color: inherit;
+
+}
+
+/* App Container */
+
+.app {
+
+  width: 100%;
+
+  margin: auto;
+
+}
+
+/* Prevent Image Overflow */
+
+img {
+
+  max-width: 100%;
+
+  display: block;
+
+}
+
+/* Smooth Horizontal Scroll */
 
 .no-scrollbar::-webkit-scrollbar {
+
   display: none;
+
 }
 
 .no-scrollbar {
+
   -ms-overflow-style: none;
+
   scrollbar-width: none;
+
   scroll-behavior: smooth;
+
 }
 
-body {
-  min-height: 100vh;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-/* This is your "Frame" */
-.app {
-  width: 100%;
-  margin: auto;
-}
+/* Fade Animation */
 
 @keyframes fadeIn {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
+
+  0% {
+
+    opacity: 0;
+
+  }
+
+  100% {
+
+    opacity: 1;
+
+  }
+
 }
 
-/* Correct v4 syntax for hiding scrollbars */
+/* Tailwind Utility */
+
 @utility hide-scrollbar {
+
   &::-webkit-scrollbar {
+
     display: none;
+
   }
+
 }
+
+/* Theme */
 
 @theme {
+
   --color-primary: #2b6ece;
-  --grid-template-columns-auto: repeat(auto-fill, minmax(200px, 250px));
+
+  --grid-template-columns-auto:
+    repeat(auto-fit, minmax(220px, 1fr));
+
 }
 
-.active hr{
-  @apply block
+/* Active Navbar */
+
+.active hr {
+
+  @apply block;
+
 }
 
-::-webkit-scrollbar{
-  @apply hidden
+/* Hide Scrollbars */
+
+::-webkit-scrollbar {
+
+  @apply hidden;
+
 }
 
-@media(max-width:740px){
-  .active p{
-    @apply text-white bg-primary
+/* Mobile Responsive */
+
+@media(max-width:740px) {
+
+  .active p {
+
+    @apply text-white bg-primary;
+
   }
+
 }

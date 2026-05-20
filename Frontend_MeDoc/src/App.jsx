@@ -31,7 +31,6 @@ import ProtectedDoctorRoute from './components/protected/ProtectedDoctorRoute'
 import ProtectedUserRoute from './components/protected/ProtectedUserRoute'
 import AdminOrders from './pages/AdminOrders'
 
-
 const App = () => {
   const location = useLocation();
 
@@ -77,7 +76,14 @@ const App = () => {
         </Routes>
       </div>
       <Footer />
+
+       {
+
+        !isAdminPage && !isDoctorPage && <Footer />
+
+      }
     </>
+    
 
 
 
