@@ -76,12 +76,6 @@ const App = () => {
         </Routes>
       </div>
       <Footer />
-
-       {
-
-        !isAdminPage && !isDoctorPage && <Footer />
-
-      }
     </>
     
 
