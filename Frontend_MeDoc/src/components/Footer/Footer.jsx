@@ -1,5 +1,6 @@
 import React from 'react'
 import { assets } from '../../assets/assets'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 
 const Footer = () => {
   return (
@@ -22,10 +23,10 @@ const Footer = () => {
             <div  className='flex flex-col items-start gap-5'>
                 <h2  className='text-white text-xl font-semibold'>COMPANY</h2>
                 <ul  className='flex flex-col text-1xl gap-2 cursor-pointer'>
-                    <li className="hover:text-white transition-all">Home</li>
-                    <li className="hover:text-white transition-all">About us</li>
-                    <li className="hover:text-white transition-all">Contact Us</li>
-                    <li className="hover:text-white transition-all">Privacy Policy</li>
+                   <NavLink to='/'> <li  className="hover:text-white transition-all">Home</li></NavLink>
+                    <NavLink to='/'><li className="hover:text-white transition-all">About us</li></NavLink>
+                    <NavLink to='/'><li className="hover:text-white transition-all">Contact Us</li></NavLink>
+                    <NavLink to='/'><li className="hover:text-white transition-all">Privacy Policy</li></NavLink>
                 </ul>
             </div >
             {/* ----- Right Section ----- */}
