@@ -24,5 +24,9 @@ app.use("/api/doctor", doctorRoutes);
 app.use("/api/appointment", appointmentRoutes);
 app.use("/api/order", orderRoutes);
 
+app.get("/",(req,res)=>{
+  res.send("Backend server is up and running");
+});
+
 module.exports = app;
 
